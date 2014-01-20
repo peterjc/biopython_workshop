@@ -13,6 +13,40 @@ The Biopython website http://www.biopython.org has more information including th
 (html, `PDF available <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_),
 which is worth going through once you have mastered the basics of Python.
 
+========
+Notation
+========
+
+Text blocks starting with ``$`` show something you would type and run at the
+command line prompt, where the ``$`` itself represents the prompt. For example::
+
+    $ python -V
+    Python 2.7.5
+
+Depending how your system is configured, rather than just ``$`` you may see you
+user name and the current working directory.
+
+Lines starting ``>>>``` represent the interactive Python prompt, and something
+you would type inside Python. For example:
+
+    $ python
+    Python 2.7.3 (default, Nov  7 2012, 23:34:47) 
+    [GCC 4.4.6 20120305 (Red Hat 4.4.6-4)] on linux2
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> 7 * 6
+    42
+    >>> quit()
+
+Here you would only need to type ``7 * 6`` (and enter) into Python, the ``>>>```
+is already there. To quit the interactive Python prompt use ``quit()`` (and enter).
+This example would usually be shortened to just:
+
+    >>> 7 * 6
+    42
+
+These text blocks are also used for entire short Python scripts, which you can
+copy and save as a plain text file with the extension `.py` to run them.
+
 =============
 Prerequisites
 =============
@@ -22,10 +56,9 @@ Biopython 1.63 supports Python 2.6, 2.7 and 3.3 (and should work on more recent
 versions). The examples here assume you are using Python 2.6 or 2.7, but in
 general should work with Python 3 with minimal changes. Check this works::
 
-    $ python
-    >>> import Bio
-    >>> Bio.__version__
-    '1.63'
+    $ python -c "import Bio; print(Bio.__version__)"
+    1.63
+
 
 =================
 Workshop Sessions
