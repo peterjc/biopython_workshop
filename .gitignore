@@ -1,0 +1,34 @@
+#Ingore sample files
+*.gbk
+*.fna
+*.ffn
+*.faa
+*.fasta
+
+#Ignore backup files from some Unix editors,
+*~
+*.swp
+*.bak
+
+#Ignore patches and any original files created by patch command
+*.diff
+*.patch
+*.orig
+*.rej
+
+#Ignore these hidden files from Mac OS X
+.DS_Store
+
+#Ignore hidden files from Dolphin window manager
+.directory
+ 
+#Ignore all compiled python files (e.g. from running the unit tests):
+*.pyc
+*.pyo
+
+#Ignore all Jython class files (present if using Jython)
+*.class
+
+#Ignore compressed archives of files
+*.zip
+*.tar.gz
