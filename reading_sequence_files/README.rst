@@ -75,7 +75,7 @@ We'll start by looking at the protein sequence in the FASTA amino acid file,
 
 We can use ``grep`` to count the number of proteins by using the regular
 expression pattern ``^>`` (the caret is a special symbol meaning look at
-the start of a line):
+the start of a line)::
 
     $ grep -c "^>" NC_000913.faa 
     4141
@@ -110,7 +110,7 @@ which contains the following::
         count += 1
     print("There were %i records in file %s" % (count, filename))
 
-This time it should be easy to copy & paste in one go. We can now run this:
+This time it should be easy to copy & paste in one go. We can now run this::
 
     $ python count_proteins.py
     There were 4141 records in file NC_000913.faa
@@ -137,7 +137,7 @@ annotation about it - most importantly the identifier.
 For FASTA files, the record identifier is taken to be the first word on the ``>``
 line -- anything after a space is *not* part of the identifier.
 
-This simple example prints out the record identifers and their lengths:
+This simple example prints out the record identifers and their lengths::
 
     from Bio import SeqIO
     filename = "NC_000913.faa"
@@ -145,7 +145,7 @@ This simple example prints out the record identifers and their lengths:
         print("Record %s, length %i" % (record.id, len(record)))
 
 If you save that as ``record_lengths.py`` and run it you'll get over four thousand
-lines of output:
+lines of output::
 
     $ python record_lengths.py
     Record gi|16127995|ref|NP_414542.1|, length 21
@@ -162,7 +162,7 @@ The output shown here is truncated!
 
 **Exercise**: Create a modified script ``total_length.py`` based on the above examples
 which counts the number of records and calculates the total length of all the
-sequences (i.e. ``21 + 820 + 310 + 428 + ... + 46 + 228``), giving:
+sequences (i.e. ``21 + 820 + 310 + 428 + ... + 46 + 228``), giving::
 
     $ python total_length.py
     4141 records, total length 1311442
@@ -183,7 +183,7 @@ their length using the ``len(...)`` function, and slice them with square bracket
 to get a sub-sequence or a single letter.
 
 **Exercise**: Using ``SeqIO.parse(...)`` in a for loop, for each record print out the
-identifier, the first 10 letters of each sequences, the last 10 letters. e.g.
+identifier, the first 10 letters of each sequences, the last 10 letters. e.g.::
 
    $ python print_seq.py
    gi|16127995|ref|NP_414542.1| MKRISTTITT...ITITTGNGAG
@@ -210,14 +210,14 @@ and count how many records fail this. Let's create a script called ``check_start
             print("%s starts %s" % (record.id, record.seq[0]))
     print("Found %i records in %s which did not start with M" % (bad, filename))
 
-If you run that, you should find this *E. coli* protein set all had leading methionines:
+If you run that, you should find this *E. coli* protein set all had leading methionines::
 
     $ python check_start_met.py
     Found %i records in NC_000913.faa which did not start with M
 
 Good - no strange proteins. This genome has been completely sequenced and a lot of
 work has been done on the annotation, so it is a 'Gold Standard'. Now try this on
-the potato protein file ``PGSC_DM_v3.4_pep_representative.fasta``
+the potato protein file ``PGSC_DM_v3.4_pep_representative.fasta``::
 
     $ python check_start_met.py
     PGSC0003DMP400032467 starts T
@@ -252,7 +252,7 @@ amino acid.
 
 We'll talk about writing out sequence files soon, but first let's check the example
 protein FASTA files for any "*" symbols in the sequence. For this you can use several
-of the standard Python string operations which also apply to ``Seq`` objects, e.g.:
+of the standard Python string operations which also apply to ``Seq`` objects, e.g.::
 
     >>> my_string = "MLNTCRVPLTDRKVKEKRAMKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVFTAYESE*"
     >>> my_string.startswith("M")
@@ -268,7 +268,7 @@ of the standard Python string operations which also apply to ``Seq`` objects, e.
 
 **Exercise**: Write a python script to check ``NC_000913.faa`` to count the number of
 sequences with a "*" in them (anywhere), and the number where the sequence ends with
-a "*". Then try it on ``PGSC_DM_v3.4_pep_representative.fasta`` as well. e.g.
+a "*". Then try it on ``PGSC_DM_v3.4_pep_representative.fasta`` as well. e.g.::
 
     $ python check_stops.py
     Checking NC_000913.faa for terminal stop codons
