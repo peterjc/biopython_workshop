@@ -118,7 +118,7 @@ This time it should be easy to copy & paste in one go. We can now run this:
 **Exercise**: Modify this to count the number of records in the other FASTA files,
 both from *E. coli* K12 and the potato genome (``PGSC_DM_v3.4_pep_representative.fasta``).
 
-**Advanced exercise**: Using ``sys.argv`` get the filename as a command line argument,
+**Advanced Exercise**: Using ``sys.argv`` get the filename as a command line argument,
 so that you can run it like this::
 
     $ python count_proteins_adv.py NC_000913.ffn
@@ -231,44 +231,49 @@ the potato protein file ``PGSC_DM_v3.4_pep_representative.fasta``
 not just the identifier. *Tip*: Try reading the documentation, e.g. Biopython's wiki page
 on the `SeqRecord <http://biopython.org/wiki/SeqRecord>`_.
 
-What did you notice about these record descriptions?
+**Discussion**: What did you notice about these record descriptions? Can you think of any
+reasons why there could be so many genes/proteins with a problem at the start?
 
+------------------------
+Checking stop characters
+------------------------
 
-----------------
-Parsing Potatoes
-----------------
+In the standard one letter IUPAC amino acid codes for proteins, "*" is used for a
+stop codon. For many analyses tools having a "*" in the protein sequence can cause
+an error. There are two main reasons why you might see a "*" in a protein sequence.
 
-For this example we'll first download and unzip a FASTA file of potato proteins. You
-can download this at the command line using the ``wget`` command, and decompress the
-ZIP file using the ``unzip`` command as follows. Note ``$`` indicates the command line
-prompt, copy and paste (or type) the text starting ```wget``` etc::
+First, it might be there from translation up to and including the closing stop codon
+for the gene. In this case, you might want to remove it.
 
-    $ wget http://potato.plantbiology.msu.edu/data/PGSC_DM_v3.4_pep_representative.fasta.zip
-    $ unzip PGSC_DM_v3.4_pep_representative.fasta.zip
+Second, it could be there from a problematic/broken annotation where there is an
+in-frame stop codon. In this case, you might want to fix the annotation, remove
+the whole sequence, or perhaps cheat and replace the "*" with an "X" for an unknown
+amino acid.
 
-Mac OS X users, instead of ``wget http://...`` you can use ``curl -O http://...`` here.
+We'll talk about writing out sequence files soon, but first let's check the example
+protein FASTA files for any "*" symbols in the sequence. For this you can use several
+of the standard Python string operations which also apply to ``Seq`` objects, e.g.:
 
-Once unzipped, you should have a plain text FASTA file ``PGSC_DM_v3.4_pep_representative.fasta``
-which we'll just look at quickly using a few more command line tools before starting Python.
-You can print the entire file to the terminal using ``cat``, but since it is quite large
-we'll use ``head`` to look at the start only::
+    >>> my_string = "MLNTCRVPLTDRKVKEKRAMKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVFTAYESE*"
+    >>> my_string.startswith("M")
+    True
+    >>> my_string.endswith("*")
+    True
+    >>> len(my_string)
+    70
+    >>> my_string.count("M")
+    3
+    >>> my_string.count("*")
+    1
 
-    $ head PGSC_DM_v3.4_pep_representative.fasta
-    >PGSC0003DMP400067339 PGSC0003DMT400095664 Protein
-    MGVWKDSNYGKGVIIGVIDTGILPDHPSFSDVGMPPPPAKWKGVCESNFINKCNNKLIGA
-    RSYQLGNGSPIDGNGHGTHTASTAAGAFVKGANVFGNANGTAVGVAPLAHIAVYKVCSSD
-    GGCSDSDILAAMDSAIDDGVDVLSISLGGSPNSFYDDPIALGAYSATARGILVSCSAGNR
-    GPLLASVGNAAPWILTVGASTLDRKIKATVKLGNGEEFEGESAYRPQISNSTFFTLFDAA
-    KHAKDQSETPYCKPGSLNDPVIRGKIVLCLAGGGVGGGVANVDKGQVVKDAGGVGMIVIK
-    TSQYGVTKSADAHVLPALDVSDADGLRIRAYTNSTINSVATITFQGTIIGDKNAPIVAAF
-    SSRGPSRASPGILKPDIIGPGVNILASWTTSVDDNKNTKSTFNIISGTSMSCPHLSGVAA
-    LLKSSHPDWSPAVIKSAIMTTADTLNLANSPILDERLIPAYIFAVGAGHVNPSRANDPGL
-    VYDTPFEDYVPYFCGLNYTNREVGKMLQRQVNCLKVKSIPEAQLNYPSFSIFRLGSTPQT
+**Exercise**: Write a python script to check ``NC_000913.faa`` to count the number of
+sequences with a "*" in them (anywhere), and the number where the sequence ends with
+a "*". Then try it on ``PGSC_DM_v3.4_pep_representative.fasta`` as well. e.g.
 
-We can count the number of records using the ``grep`` command and the regular expression
-pattern ``^>`` which means look for a greater-than-sign at the start of a line:
+    $ python check_stops.py
+    Checking NC_000913.faa for terminal stop codons
+    0 records with * in them
+    0 with * at the end
 
-    $ grep -c "^>" PGSC_DM_v3.4_pep_representative.fasta
-    39031
-
-That says this FASTA file contains nearly forty thousand sequences, quite a lot bigger!
+**Discussion**: What did you notice about the "*" stop characters in these FASTA files?
+What should we do to 'fix' the problems?
