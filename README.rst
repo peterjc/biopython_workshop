@@ -42,7 +42,7 @@ at the start, or gradually as needed.
 
 Under Linux this is easily done at the command line with the ``wget`` tool. For Mac
 OS X users, ``wget`` is not installed by default so instead of ``wget ftp://...`` or
-``wget http://..`` please use `curl -O ftp://...`` or ``curl -O http://..`` instead.
+``wget http://..`` please use ``curl -O ftp://...`` or ``curl -O http://..`` instead.
 
 In the following command line examples ``$`` indicates the command line prompt, copy
 and paste (or type) the text starting after this (e.g. ``wget ftp://...``).
@@ -74,11 +74,11 @@ the doubled monoploid *Solanum tuberosum* group Phureja clone DM1-3::
     $ wget http://potato.plantbiology.msu.edu/data/PGSC_DM_v3.4_pep_representative.fasta.zip
 
 For anyone working on Mac OS X, the ``wget`` command is not installed by default. You can
-use this slightly more complicated ``curl`` command instead:
+use this slightly more complicated ``curl`` command instead::
 
     $ curl -O http://potato.plantbiology.msu.edu/data/PGSC_DM_v3.4_pep_representative.fasta.zip
 
-Once download, decompress the ZIP file using the ``unzip`` command:
+Once download, decompress the ZIP file using the ``unzip`` command::
 
     $ unzip PGSC_DM_v3.4_pep_representative.fasta.zip
 
