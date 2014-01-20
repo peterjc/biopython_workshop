@@ -33,7 +33,7 @@ and ``q`` will quit the help and return to the Python prompt.
 Rather than showing the help for the entire ``SeqIO`` module, you can ask for the help
 on a particular object or function. Let's start with ``SeqIO.parse`` - and from now on
 the triple greater-than-sign prompt (``>>>``) will be used to indicate something you
-would type into Python:
+would type into Python::
 
     >>> help(SeqIO.parse)
 
