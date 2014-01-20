@@ -37,9 +37,15 @@ TODO - Links to separate documents.
 Sample Data
 ===========
 
-Many of the examples will use real biological data files. Links will be provided
-in the text, but you may wish to download the following files in advance. Under
-Linux this is easily done at the command line with the ``wget`` tool.
+Many of the examples will use real biological data files. You could download them all
+at the start, or gradually as needed.
+
+Under Linux this is easily done at the command line with the ``wget`` tool. For Mac
+OS X users, ``wget`` is not installed by default so instead of ``wget ftp://...`` or
+``wget http://..`` please use `curl -O ftp://...`` or ``curl -O http://..`` instead.
+
+In the following command line examples ``$`` indicates the command line prompt, copy
+and paste (or type) the text starting after this (e.g. ``wget ftp://...``).
 
 ---------------------
 *Esherichia coli* K12
@@ -52,6 +58,10 @@ plus FASTA files of the annotated genes and their protein sequences::
     $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_K_12_substr__MG1655_uid57779/NC_000913.fna
     $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_K_12_substr__MG1655_uid57779/NC_000913.ffn
     $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_K_12_substr__MG1655_uid57779/NC_000913.faa
+
+The NCBI use a confusing range of file extensions, but ``*.fna``, ``*.ffn`` and ``*.faa``
+are all plain text FASTA files - but specificially they are a whole chromosome (``*.fna``),
+gene sequences (``*.ffn``), and protein/amino acid sequences (``*.faa``).
 
 ------
 Potato
