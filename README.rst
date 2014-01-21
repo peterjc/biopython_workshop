@@ -7,11 +7,15 @@ It assumes you have been introduced to both working at the command line, and bas
 Python - for example as covered in Martin Jones' free eBook
 `Python for Biologists <http://pythonforbiologists.com/index.php/introduction-to-python-for-biologists/>`_.
 
-
 The Biopython website http://www.biopython.org has more information including the 
 `Biopython Tutorial & Cookbook <http://biopython.org/DIST/docs/tutorial/Tutorial.html>`_
 (html, `PDF available <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_),
 which is worth going through once you have mastered the basics of Python.
+
+This material was first used as part of a two-day course "Introduction to Python for
+Biologists" (Kathryn Crouch, Peter Cock and Tim Booth), part of a two-week course
+`Keystone Skills in Bioinformatics <http://environmentalomics.org/foundations/>`,
+held in February 2014 at Centre for Ecology & Hydrology (CEH), Wallingford, UK.
 
 ========
 Notation
