@@ -5,6 +5,6 @@ bad = 0
 for record in SeqIO.parse(filename, "fasta"):
     if not record.seq.startswith("M"):
         bad += 1
-        print("%s starts %s" % (record.id, record.seq[0]))
-print("Found %i records in %s which did not start with M" % (bad, filename))
+        print(record.id + " starts " + record.seq[0])
+print("Found " + str(bad) + " records in " + filename + " which did not start with M")
 

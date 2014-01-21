@@ -5,4 +5,4 @@ total = 0
 for record in SeqIO.parse(filename, "fasta"):
     count += 1
     total += len(record)
-print("%i records, total length %i" % (count, total))
+print(str(count) + " records, total length " +str(total) + " in file " + filename)

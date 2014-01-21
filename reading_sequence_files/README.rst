@@ -91,7 +91,7 @@ Now let's count the records with Biopython using the ``SeqIO.parse`` function::
     >>> count = 0
     >>> for record in SeqIO.parse(filename, "fasta"):
     ...     count += 1
-    >>> print("There were %i records in file %s" % (count, filename))
+    >>> print("There were " + str(count) + " records in file " + filename)
     There were 4141 records in file NC_000913.faa
 
 Running more than few commands like this at the Python prompt gets complicated
@@ -108,7 +108,7 @@ which contains the following::
     count = 0
     for record in SeqIO.parse(filename, "fasta"):
         count += 1
-    print("There were %i records in file %s" % (count, filename))
+    print("There were " + str(count) + " records in file " + filename)
 
 This time it should be easy to copy & paste in one go. We can now run this::
 
@@ -142,7 +142,7 @@ This simple example prints out the record identifers and their lengths::
     from Bio import SeqIO
     filename = "NC_000913.faa"
     for record in SeqIO.parse(filename, "fasta"):
-        print("Record %s, length %i" % (record.id, len(record)))
+        print("Record " + record.id + ", length " + str(len(record)))
 
 If you save that as ``record_lengths.py`` and run it you'll get over four thousand
 lines of output::
@@ -207,13 +207,13 @@ and count how many records fail this. Let's create a script called ``check_start
     for record in SeqIO.parse(filename, "fasta"):
         if not record.seq.startswith("M"):
             bad += 1
-            print("%s starts %s" % (record.id, record.seq[0]))
-    print("Found %i records in %s which did not start with M" % (bad, filename))
+            print(record.id + " starts " + record.seq[0])
+    print("Found " + str(bad) + " records in " + filename + " which did not start with M")
 
 If you run that, you should find this *E. coli* protein set all had leading methionines::
 
     $ python check_start_met.py
-    Found %i records in NC_000913.faa which did not start with M
+    Found 0 records in NC_000913.faa which did not start with M
 
 Good - no strange proteins. This genome has been completely sequenced and a lot of
 work has been done on the annotation, so it is a 'Gold Standard'. Now try this on
