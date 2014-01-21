@@ -6,5 +6,5 @@ from Bio import SeqIO
 for filename in sys.argv[1:]:
     count = 0
     for record in SeqIO.parse(filename, "fasta"):
-        count += 1
+        count += 1 # this is shorthand for count = count + 1
     print("There were " + str(count) + " records in file " + filename)

@@ -6,9 +6,9 @@ ends_with_star = 0
 print("Checking " + filename + " for terminal stop codons")
 for record in SeqIO.parse(filename, "fasta"):
     if record.seq.count("*"):
-        contains_star += 1
+        contains_star = contains_star + 1
     if record.seq.endswith("*"):
-        ends_with_star += 1
+        ends_with_star = ends_with_star + 1
 print(str(contains_star) + " records with * in them")
 print(str(ends_with_star) + " with * at the end")
 

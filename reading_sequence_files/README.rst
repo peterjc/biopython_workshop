@@ -90,7 +90,7 @@ Now let's count the records with Biopython using the ``SeqIO.parse`` function::
     >>> filename = "NC_000913.faa"
     >>> count = 0
     >>> for record in SeqIO.parse(filename, "fasta"):
-    ...     count += 1
+    ...     count = count + 1
     >>> print("There were " + str(count) + " records in file " + filename)
     There were 4141 records in file NC_000913.faa
 
@@ -107,7 +107,7 @@ which contains the following::
     filename = "NC_000913.faa"
     count = 0
     for record in SeqIO.parse(filename, "fasta"):
-        count += 1
+        count = count + 1
     print("There were " + str(count) + " records in file " + filename)
 
 This time it should be easy to copy & paste in one go. We can now run this::
@@ -206,7 +206,7 @@ and count how many records fail this. Let's create a script called ``check_start
     bad = 0
     for record in SeqIO.parse(filename, "fasta"):
         if not record.seq.startswith("M"):
-            bad += 1
+            bad = bad + 1
             print(record.id + " starts " + record.seq[0])
     print("Found " + str(bad) + " records in " + filename + " which did not start with M")
 
