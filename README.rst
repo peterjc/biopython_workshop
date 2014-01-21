@@ -14,7 +14,7 @@ which is worth going through once you have mastered the basics of Python.
 
 This material was first used as part of a two-day course "Introduction to Python for
 Biologists" (Kathryn Crouch, Peter Cock and Tim Booth), part of a two-week course
-`Keystone Skills in Bioinformatics <http://environmentalomics.org/foundations/>`,
+`Keystone Skills in Bioinformatics <http://environmentalomics.org/foundations/>`_,
 held in February 2014 at Centre for Ecology & Hydrology (CEH), Wallingford, UK.
 
 ========
