@@ -26,8 +26,8 @@ command line prompt, where the ``$`` itself represents the prompt. For example::
 Depending how your system is configured, rather than just ``$`` you may see you
 user name and the current working directory.
 
-Lines starting ``>>>``` represent the interactive Python prompt, and something
-you would type inside Python. For example:
+Lines starting ``>>>`` represent the interactive Python prompt, and something
+you would type inside Python. For example::
 
     $ python
     Python 2.7.3 (default, Nov  7 2012, 23:34:47) 
@@ -39,13 +39,13 @@ you would type inside Python. For example:
 
 Here you would only need to type ``7 * 6`` (and enter) into Python, the ``>>>```
 is already there. To quit the interactive Python prompt use ``quit()`` (and enter).
-This example would usually be shortened to just:
+This example would usually be shortened to just::
 
     >>> 7 * 6
     42
 
 These text blocks are also used for entire short Python scripts, which you can
-copy and save as a plain text file with the extension `.py` to run them.
+copy and save as a plain text file with the extension ``.py`` to run them.
 
 =============
 Prerequisites
