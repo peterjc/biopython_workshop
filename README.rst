@@ -30,7 +30,7 @@ command line prompt, where the ``$`` itself represents the prompt. For example:
     Python 2.7.5
 
 Depending how your system is configured, rather than just ``$`` you may see you
-user name and the current working directory. Here you would only type ``python -V''
+user name and the current working directory. Here you would only type ``python -V``
 (python space minus capital V) to find out the default version of Python installed.
 
 Lines starting ``>>>`` represent the interactive Python prompt, and something
