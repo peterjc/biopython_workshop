@@ -90,7 +90,7 @@ the start of a line):
 
 Now let's count the records with Biopython using the ``SeqIO.parse`` function:
 
-.. sourcecode::	console
+.. sourcecode::	pycon
 
     $ python
     Python 2.7.3 (default, Nov  7 2012, 23:34:47) 
