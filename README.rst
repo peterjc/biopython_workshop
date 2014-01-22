@@ -22,7 +22,9 @@ Notation
 ========
 
 Text blocks starting with ``$`` show something you would type and run at the
-command line prompt, where the ``$`` itself represents the prompt. For example::
+command line prompt, where the ``$`` itself represents the prompt. For example:
+
+.. sourcecode:: console
 
     $ python -V
     Python 2.7.5
@@ -31,7 +33,9 @@ Depending how your system is configured, rather than just ``$`` you may see you
 user name and the current working directory.
 
 Lines starting ``>>>`` represent the interactive Python prompt, and something
-you would type inside Python. For example::
+you would type inside Python. For example:
+
+.. sourcecode:: pycon
 
     $ python
     Python 2.7.3 (default, Nov  7 2012, 23:34:47) 
@@ -43,7 +47,9 @@ you would type inside Python. For example::
 
 Here you would only need to type ``7 * 6`` (and enter) into Python, the ``>>>```
 is already there. To quit the interactive Python prompt use ``quit()`` (and enter).
-This example would usually be shortened to just::
+This example would usually be shortened to just:
+
+.. sourcecode:: pycon
 
     >>> 7 * 6
     42
@@ -58,17 +64,19 @@ Prerequisites
 We assume you have Python and Biopython 1.63 or later installed and working.
 Biopython 1.63 supports Python 2.6, 2.7 and 3.3 (and should work on more recent
 versions). The examples here assume you are using Python 2.6 or 2.7, but in
-general should work with Python 3 with minimal changes. Check this works::
+general should work with Python 3 with minimal changes. Check this works:
+
+.. sourcecode:: console
 
     $ python -c "import Bio; print(Bio.__version__)"
     1.63
 
 
 =================
-Workshop Sessions
+Workshop Sections
 =================
 
-TODO - Links to separate documents.
+* `Reading sequence files <reading_sequence_files/README.rst>`_.
 
 ===========
 Sample Data
@@ -89,7 +97,9 @@ and paste (or type) the text starting after this (e.g. ``wget ftp://...``).
 ---------------------
 
 We'll use the complete genome of this model bacteria in GenBank format, FASTA format,
-plus FASTA files of the annotated genes and their protein sequences::
+plus FASTA files of the annotated genes and their protein sequences:
+
+.. sourcecode:: console
 
     $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_K_12_substr__MG1655_uid57779/NC_000913.gbk
     $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_K_12_substr__MG1655_uid57779/NC_000913.fna
@@ -106,14 +116,18 @@ Potato
 
 We'll use this amino acid/protein set from the Potato Genome Sequencing Consortium (PGSC)
 (see http://solanaceae.plantbiology.msu.edu/pgsc_download.shtml for more downloads) for
-the doubled monoploid *Solanum tuberosum* group Phureja clone DM1-3::
+the doubled monoploid *Solanum tuberosum* group Phureja clone DM1-3:
+
+.. sourcecode::	console
 
     $ wget http://potato.plantbiology.msu.edu/data/PGSC_DM_v3.4_pep_representative.fasta.zip
 
 For anyone working on Mac OS X, the ``wget`` command is not installed by default. As noted
 above you can use ``curl -O http://...``` instead.
 
-Once downloaded, decompress the ZIP file using the ``unzip`` command::
+Once downloaded, decompress the ZIP file using the ``unzip`` command:
+
+.. sourcecode:: console
 
     $ unzip PGSC_DM_v3.4_pep_representative.fasta.zip
 
