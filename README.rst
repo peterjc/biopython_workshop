@@ -30,7 +30,8 @@ command line prompt, where the ``$`` itself represents the prompt. For example:
     Python 2.7.5
 
 Depending how your system is configured, rather than just ``$`` you may see you
-user name and the current working directory.
+user name and the current working directory. Here you would only type ``python -V''
+(python space minus capital V) to find out the default version of Python installed.
 
 Lines starting ``>>>`` represent the interactive Python prompt, and something
 you would type inside Python. For example:
@@ -45,7 +46,7 @@ you would type inside Python. For example:
     42
     >>> quit()
 
-Here you would only need to type ``7 * 6`` (and enter) into Python, the ``>>>```
+Here you would only need to type ``7 * 6`` (and enter) into Python, the ``>>>``
 is already there. To quit the interactive Python prompt use ``quit()`` (and enter).
 This example would usually be shortened to just:
 
