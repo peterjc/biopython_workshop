@@ -101,9 +101,9 @@ characters.
 
 Instead, using your favourite editor (e.g. ``nano`` or ``gedit``) create a plain
 text file (in the same directory as the *E. coli* files) named ``count_fasta.py``
-which contains the following::
+which contains the following:
 
-.. sourcecode:: python
+.. code:: python
 
     from Bio import SeqIO
     filename = "NC_000913.faa"
@@ -139,9 +139,9 @@ annotation about it - most importantly the identifier.
 For FASTA files, the record identifier is taken to be the first word on the ``>``
 line -- anything after a space is *not* part of the identifier.
 
-This simple example prints out the record identifers and their lengths::
+This simple example prints out the record identifers and their lengths:
 
-.. sourcecode:: python
+.. code:: python
 
     from Bio import SeqIO
     filename = "NC_000913.faa"
@@ -203,9 +203,9 @@ Checking proteins start with methionine
 
 In the next example we'll check all the protein sequences start with a methionine
 (represented as the letter "M" in the standard IUPAC single letter amino acid code),
-and count how many records fail this. Let's create a script called ``check_start_met.py``::
+and count how many records fail this. Let's create a script called ``check_start_met.py``:
 
-.. sourcecode:: python
+.. code:: python
 
     from Bio import SeqIO
     filename = "NC_000913.faa"
@@ -258,9 +258,9 @@ amino acid.
 
 We'll talk about writing out sequence files soon, but first let's check the example
 protein FASTA files for any "*" symbols in the sequence. For this you can use several
-of the standard Python string operations which also apply to ``Seq`` objects, e.g.::
+of the standard Python string operations which also apply to ``Seq`` objects, e.g.:
 
-.. sourcecode:: python
+.. code:: python
 
     >>> my_string = "MLNTCRVPLTDRKVKEKRAMKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVFTAYESE*"
     >>> my_string.startswith("M")
