@@ -103,12 +103,8 @@ Instead, using your favourite editor (e.g. ``nano`` or ``gedit``) create a plain
 text file (in the same directory as the *E. coli* files) named ``count_fasta.py``
 which contains the following::
 
-    from Bio import SeqIO
-    filename = "NC_000913.faa"
-    count = 0
-    for record in SeqIO.parse(filename, "fasta"):
-        count = count + 1
-    print("There were " + str(count) + " records in file " + filename)
+.. literalinclude:: count_fasta.py
+   :language: python
 
 This time it should be easy to copy & paste in one go. We can now run this::
 
