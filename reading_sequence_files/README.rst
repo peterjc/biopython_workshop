@@ -16,7 +16,9 @@ Biopython documentation.
 
 We'll run the interactive Python prompt (or you can use a Python GUI if you prefer,
 depending what you are used to working with), load the ``SeqIO`` module with the
-``import`` command, and have a look at the built in help::
+``import`` command, and have a look at the built in help:
+
+.. sourcecode:: pycon
 
     $ python2.7
     Python 2.7.3 (default, Nov  7 2012, 23:34:47) 
@@ -33,7 +35,9 @@ and ``q`` will quit the help and return to the Python prompt.
 Rather than showing the help for the entire ``SeqIO`` module, you can ask for the help
 on a particular object or function. Let's start with ``SeqIO.parse`` - and from now on
 the triple greater-than-sign prompt (``>>>``) will be used to indicate something you
-would type into Python::
+would type into Python:
+
+.. sourcecode::	pycon
 
     >>> help(SeqIO.parse)
 
@@ -59,7 +63,9 @@ Counting Records
 
 We'll start by looking at the protein sequence in the FASTA amino acid file,
 ``NC_000913.faa``. First take a quick peek using some command line tools like
-``head`` to look at the start of the file::
+``head`` to look at the start of the file:
+
+.. sourcecode:: console
 
     $ head NC_000913.faa 
     >gi|16127995|ref|NP_414542.1| thr operon leader peptide [Escherichia coli str. K-12 substr. MG1655]
@@ -75,12 +81,16 @@ We'll start by looking at the protein sequence in the FASTA amino acid file,
 
 We can use ``grep`` to count the number of proteins by using the regular
 expression pattern ``^>`` (the caret is a special symbol meaning look at
-the start of a line)::
+the start of a line):
+
+.. sourcecode::	console
 
     $ grep -c "^>" NC_000913.faa 
     4141
 
-Now let's count the records with Biopython using the ``SeqIO.parse`` function::
+Now let's count the records with Biopython using the ``SeqIO.parse`` function:
+
+.. sourcecode::	console
 
     $ python
     Python 2.7.3 (default, Nov  7 2012, 23:34:47) 
@@ -112,7 +122,9 @@ which contains the following:
         count = count + 1
     print("There were " + str(count) + " records in file " + filename)
 
-This time it should be easy to copy & paste in one go. We can now run this::
+This time it should be easy to copy & paste in one go. We can now run this:
+
+.. sourcecode::	    console
 
     $ python count_fasta.py
     There were 4141 records in file NC_000913.faa
@@ -121,7 +133,9 @@ This time it should be easy to copy & paste in one go. We can now run this::
 both from *E. coli* K12 and the potato genome (``PGSC_DM_v3.4_pep_representative.fasta``).
 
 **Advanced Exercise**: Using ``sys.argv`` get the filename as a command line argument,
-so that you can run it like this::
+so that you can run it like this:
+
+.. sourcecode::	console
 
     $ python count_fasta_adv.py NC_000913.ffn
     There were 4321 records in file NC_000913.ffn
@@ -149,7 +163,9 @@ This simple example prints out the record identifers and their lengths:
         print("Record " + record.id + ", length " + str(len(record)))
 
 If you save that as ``record_lengths.py`` and run it you'll get over four thousand
-lines of output::
+lines of output:
+
+.. sourcecode::	console
 
     $ python record_lengths.py
     Record gi|16127995|ref|NP_414542.1|, length 21
@@ -166,7 +182,9 @@ The output shown here is truncated!
 
 **Exercise**: Create a modified script ``total_length.py`` based on the above examples
 which counts the number of records and calculates the total length of all the
-sequences (i.e. ``21 + 820 + 310 + 428 + ... + 46 + 228``), giving::
+sequences (i.e. ``21 + 820 + 310 + 428 + ... + 46 + 228``), giving:
+
+.. sourcecode::	console
 
     $ python total_length.py
     4141 records, total length 1311442
@@ -187,7 +205,9 @@ their length using the ``len(...)`` function, and slice them with square bracket
 to get a sub-sequence or a single letter.
 
 **Exercise**: Using ``SeqIO.parse(...)`` in a for loop, for each record print out the
-identifier, the first 10 letters of each sequences, the last 10 letters. e.g.::
+identifier, the first 10 letters of each sequences, the last 10 letters. e.g.:
+
+.. sourcecode::	console
 
    $ python print_seq.py
    gi|16127995|ref|NP_414542.1| MKRISTTITT...ITITTGNGAG
@@ -216,14 +236,18 @@ and count how many records fail this. Let's create a script called ``check_start
             print(record.id + " starts " + record.seq[0])
     print("Found " + str(bad) + " records in " + filename + " which did not start with M")
 
-If you run that, you should find this *E. coli* protein set all had leading methionines::
+If you run that, you should find this *E. coli* protein set all had leading methionines:
+
+.. sourcecode::	console
 
     $ python check_start_met.py
     Found 0 records in NC_000913.faa which did not start with M
 
 Good - no strange proteins. This genome has been completely sequenced and a lot of
 work has been done on the annotation, so it is a 'Gold Standard'. Now try this on
-the potato protein file ``PGSC_DM_v3.4_pep_representative.fasta``::
+the potato protein file ``PGSC_DM_v3.4_pep_representative.fasta``:
+
+.. sourcecode::	console
 
     $ python check_start_met.py
     PGSC0003DMP400032467 starts T
@@ -276,7 +300,9 @@ of the standard Python string operations which also apply to ``Seq`` objects, e.
 
 **Exercise**: Write a python script to check ``NC_000913.faa`` to count the number of
 sequences with a "*" in them (anywhere), and the number where the sequence ends with
-a "*". Then try it on ``PGSC_DM_v3.4_pep_representative.fasta`` as well. e.g.::
+a "*". Then try it on ``PGSC_DM_v3.4_pep_representative.fasta`` as well. e.g.:
+
+.. sourcecode::	console
 
     $ python check_stops.py
     Checking NC_000913.faa for terminal stop codons
