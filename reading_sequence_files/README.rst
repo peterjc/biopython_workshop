@@ -100,7 +100,7 @@ fiddly to copy and paste without the ``>>>`` prompt and ``...`` line continuatio
 characters.
 
 Instead, using your favourite editor (e.g. ``nano`` or ``gedit``) create a plain
-text file (in the same directory as the *E. coli* files) named ``count_proteins.py``
+text file (in the same directory as the *E. coli* files) named ``count_fasta.py``
 which contains the following::
 
     from Bio import SeqIO
@@ -112,7 +112,7 @@ which contains the following::
 
 This time it should be easy to copy & paste in one go. We can now run this::
 
-    $ python count_proteins.py
+    $ python count_fasta.py
     There were 4141 records in file NC_000913.faa
 
 **Exercise**: Modify this to count the number of records in the other FASTA files,
@@ -121,7 +121,7 @@ both from *E. coli* K12 and the potato genome (``PGSC_DM_v3.4_pep_representative
 **Advanced Exercise**: Using ``sys.argv`` get the filename as a command line argument,
 so that you can run it like this::
 
-    $ python count_proteins_adv.py NC_000913.ffn
+    $ python count_fasta_adv.py NC_000913.ffn
     There were 4321 records in file NC_000913.ffn
 
 ----------------------
