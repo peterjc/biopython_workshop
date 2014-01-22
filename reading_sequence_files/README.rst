@@ -103,8 +103,8 @@ Instead, using your favourite editor (e.g. ``nano`` or ``gedit``) create a plain
 text file (in the same directory as the *E. coli* files) named ``count_fasta.py``
 which contains the following::
 
-.. literalinclude:: count_fasta.py
-   :language: python
+.. include:: count_fasta.py
+   :code: python
 
 This time it should be easy to copy & paste in one go. We can now run this::
 
