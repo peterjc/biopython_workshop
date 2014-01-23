@@ -330,5 +330,5 @@ Use the GenBank example file for *E. coli* K12.
 Writing Sequence Files in Biopython
 ===================================
 
-We move on to `writing sequence files <../writing_sequence_files/README.rst'>_
+We move on to `writing sequence files <../writing_sequence_files/README.rst>`_
 in the next section.
