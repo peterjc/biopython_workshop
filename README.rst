@@ -17,6 +17,13 @@ Biologists" (Kathryn Crouch, Peter Cock and Tim Booth), part of a two-week cours
 `Keystone Skills in Bioinformatics <http://environmentalomics.org/foundations/>`_,
 held in February 2014 at Centre for Ecology & Hydrology (CEH), Wallingford, UK.
 
+=================
+Workshop Sections
+=================
+
+* `Reading sequence files <reading_sequence_files/README.rst>`_.
+* `Writing sequence files <writing_sequence_files/README.rst>`_.
+
 ========
 Notation
 ========
@@ -72,13 +79,6 @@ general should work with Python 3 with minimal changes. Check this works:
     $ python -c "import Bio; print(Bio.__version__)"
     1.63
 
-
-=================
-Workshop Sections
-=================
-
-* `Reading sequence files <reading_sequence_files/README.rst>`_.
-* `Writing sequence files <writing_sequence_files/README.rst>`_.
 
 ===========
 Sample Data
