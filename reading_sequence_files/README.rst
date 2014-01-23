@@ -1,11 +1,13 @@
-Sequence Files in Biopython
-===========================
+===================================
+Reading Sequence Files in Biopython
+===================================
 
 Dealing with assorted sequence file formats is one of the strengths of Biopython.
 The primary module we'll be using is `Bio.SeqIO <http://biopython.org/wiki/SeqIO>`_,
 which is short for sequence input/output (following the naming convention set by
 `BioPerl's SeqIO module <http://bioperl.org/wiki/HOWTO:SeqIO>`_).
 
+-------------
 Built-in Help
 -------------
 
@@ -311,3 +313,22 @@ a "*". Then try it on ``PGSC_DM_v3.4_pep_representative.fasta`` as well. e.g.:
 
 **Discussion**: What did you notice about the "*" stop characters in these FASTA files?
 What should we do to 'fix' the problems?
+
+--------------
+Single Records
+--------------
+
+Introduct ``SeqIO.read(...)`` using the whole genome FASTA file for *E. coli* K12.
+
+----------------------
+Different File Formats
+----------------------
+
+Use the GenBank example file for *E. coli* K12.
+
+===================================
+Writing Sequence Files in Biopython
+===================================
+
+We move on to `writing sequence files <../writing_sequence_files/README.rst'>_
+in the next section.
