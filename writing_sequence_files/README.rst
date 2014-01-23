@@ -4,16 +4,17 @@ Writing Sequences Files in Biopython
 
 The `previous section <../reading_sequence_files/README.rst>`_ talked
 about reading sequence files in Biopython using the ``SeqIO.parse(...)``
-function. Now we'll talk about writing sequence files using the sister
+function. Now we'll focus on writing sequence files using the sister
 function ``SeqIO.write(...)``.
 
 The more gently paced `Biopython Tutorial and Cookbook
 <http://biopython.org/DIST/docs/tutorial/Tutorial.html>`_
 (`PDF <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_)
 first covers creating your own records (``SeqRecord`` objects) and
-then how to write them out. We're going to skip that and work with
-read-made ``SeqRecord`` objects from existing sequence files loaded
-with ``SeqIO.parse(...)``. Let's start with something really simple...
+then how to write them out. We're going to skip that here, and work
+with ready-made ``SeqRecord`` objects loaded with ``SeqIO.parse(...)``.
+
+Let's start with something really simple...
 
 --------------------------
 Converting a sequence file
@@ -48,7 +49,8 @@ Save this as ``convert_gb_to_fasta.py`` and run it:
     $ python convert_gb_to_fasta.py
     1 records converted
 
-Also have a look at the output file:
+Notice that the ``SeqIO.convert(...)`` function returns the number of
+sequences it converted -- here only one. Also have a look at the output file:
 
 .. sourcecode:: console
 
@@ -85,15 +87,103 @@ you'd do this explictly:
 Previously we'd always used the results from ``SeqIO.parse(...)`` in a for
 loop - but here the for loop happens inside the ``SeqIO.write(...)`` function.
 
--------------------------
-Writing within a for-loop
--------------------------
+*Exercise:* Check this does the same as the ``SeqIO.convert(...)`` version above.
 
-TODO
+The ``SeqIO.write(...)`` function is happy to be given multiple records
+like this, or simply as a list of ``SeqRecord`` objects. You can also give
+it just one record:
+
+.. sourcecode:: python
+
+    from Bio import SeqIO
+    input_filename = "NC_000913.gbk"
+    output_filename = "NC_000913_converted.fasta"
+    record = SeqIO.read(input_filename, "gb")
+    SeqIO.write(record, output_filename, "fasta")
+
+We'll be doing this in the next example, where we call ``SeqIO.write(..)``
+several times in order to build up a mult-record output file.
 
 -------------------------
 Filtering a sequence file
 -------------------------
 
-TODO
+Suppose we wanted to filter a FASTA file by length, for example
+exclude protein sequences less than 100 amino acids long.
 
+The `Biopython Tutorial and Cookbook
+<http://biopython.org/DIST/docs/tutorial/Tutorial.html>`_
+(`PDF <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_)
+has filtering  examples combining ``SeqIO.write(...)`` with more
+advanced Python features like generator expressions and so on.
+These are all worth learning about later, but in this workshop
+we will stick with the simpler for-loop.
+
+You might try something like this:
+
+.. sourcecode:: python
+
+    from Bio import SeqIO
+    input_filename = "NC_000913.faa"
+    output_filename = "NC_000913_long_only.faa"
+    count = 0
+    total = 0
+    for record in SeqIO.parse(input_filename, "fasta"):
+        total = total + 1
+        if 100 <= len(record):
+            count = count + SeqIO.write(record, output_filename, "fasta")
+    print(str(count) + " records selected out of " + str(total))
+
+Save this as ``length_filter_naive.py``, and run it. What does wrong?
+
+.. sourcecode:: console
+
+    $ python length_filter_naive.py
+    3719 records selected out of 4141
+
+*Discussion:* What goes wrong? Have a look at the output file... Why?
+
+    $ grep -c "^>" NC_000913_long_only.faa
+    1
+    $ cat NC_000913_long_only.faa 
+    >gi|16132220|ref|NP_418820.1| predicted methyltransferase [Escherichia coli str. K-12 substr. MG1655]
+    MRITIILVAPARAENIGAAARAMKTMGFSDLRIVDSQAHLEPATRWVAHGSGDIIDNIKV
+    FPTLAESLHDVDFTVATTARSRAKYHYYATPVELVPLLEEKSSWMSHAALVFGREDSGLT
+    NEELALADVLTGVPMVADYPSLNLGQAVMVYCYQLATLIQQPAKSDATADQHQLQALRER
+    AMTLLTTLAVADDIKLVDWLQQRLGLLEQRDTAMLHRLLHDIEKNITK
+
+The problem is that our output file only contains *one* sequence, actually
+the last long sequence in the FASTA file. Why? Because what happened is
+each time round the loop when we called ``SeqIO.write(...)`` to save one
+record, it overwrote the existing data.
+
+The solution is to handle opening and closing the file explicitly, using a
+*file handle*. Here's a working version of the script, save this as
+``length_filter.py``:
+
+.. sourcecode:: python
+
+    from Bio import SeqIO
+    input_filename = "NC_000913.faa"
+    output_filename = "NC_000913_long_only.faa"
+    count = 0
+    total = 0
+    output_handle = open(output_filename, "w")
+    for record in SeqIO.parse(input_filename, "fasta"):
+        total = total + 1
+        if 100 <= len(record):
+            count = count + SeqIO.write(record, output_handle, "fasta")
+    output_handle.close()
+    print(str(count) + " records selected out of " + str(total))
+
+This time we get the expected output - and it is much faster (needlessly
+creating and replacing several thousand small files is slow):
+
+.. sourcecode:: console
+
+    $ python length_filter.py
+    3719 records selected out of 4141
+    $ grep -c "^>" NC_000913_long_only.faa 
+    3719
+
+Yay!
