@@ -64,14 +64,14 @@ Also have a look at the output file:
     AGGCAGGGGCAGGTGGCCACCGTCCTCTCTGCCCCCGCCAAAATCACCAACCACCTGGTG
     GCGATGATTGAAAAAACCATTAGCGGCCAGGATGCTTTACCCAATATCAGCGATGCCGAA
 
-**Warning**: The output will overright any pre-existing file of the same name.
+**Warning**: The output will over-write any pre-existing file of the same name.
 
 **Advanced Exercise**: Modify this to add command line parsing to take
 the input and output filenames as arguments.
 
-The ``SeqIO.convert(...)`` function is effectively a shortcut for calling
-``SeqIO.parse(...)`` on the input, and giving this to ``SeqIO.write(...)``
-for the output. Here's how you'd do this explictly:
+The ``SeqIO.convert(...)`` function is effectively a shortcut combining
+``SeqIO.parse(...)`` for input ``SeqIO.write(...)`` for output. Here's how
+you'd do this explictly:
 
 .. sourcecode::	python
 
@@ -85,9 +85,9 @@ for the output. Here's how you'd do this explictly:
 Previously we'd always used the results from ``SeqIO.parse(...)`` in a for
 loop - but here the for loop happens inside the ``SeqIO.write(...)`` function.
 
------------------------
-Writing with a for-loop
------------------------
+-------------------------
+Writing within a for-loop
+-------------------------
 
 TODO
 
