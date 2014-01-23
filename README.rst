@@ -78,6 +78,7 @@ Workshop Sections
 =================
 
 * `Reading sequence files <reading_sequence_files/README.rst>`_.
+* `Writing sequence files <writing_sequence_files/README.rst>`_.
 
 ===========
 Sample Data
