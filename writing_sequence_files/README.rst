@@ -131,7 +131,8 @@ You might try something like this:
     for record in SeqIO.parse(input_filename, "fasta"):
         total = total + 1
         if 100 <= len(record):
-            count = count + SeqIO.write(record, output_filename, "fasta")
+            count = count + 1
+	    SeqIO.write(record, output_filename, "fasta")
     print(str(count) + " records selected out of " + str(total))
 
 Save this as ``length_filter_naive.py``, and run it, and check it worked.
@@ -176,7 +177,8 @@ Here's a working version of the script, save this as ``length_filter.py``:
     for record in SeqIO.parse(input_filename, "fasta"):
         total = total + 1
         if 100 <= len(record):
-            count = count + SeqIO.write(record, output_handle, "fasta")
+            count = count + 1
+	    SeqIO.write(record, output_handle, "fasta")
     output_handle.close()
     print(str(count) + " records selected out of " + str(total))
 
