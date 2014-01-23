@@ -155,13 +155,13 @@ Save this as ``length_filter_naive.py``, and run it, and check it worked.
     AMTLLTTLAVADDIKLVDWLQQRLGLLEQRDTAMLHRLLHDIEKNITK
 
 The problem is that our output file only contains *one* sequence, actually
-the last long sequence in the FASTA file. Why? Because what happened is
-each time round the loop when we called ``SeqIO.write(...)`` to save one
-record, it overwrote the existing data.
+the last long sequence in the FASTA file. Why? What happened is each time
+round the loop when we called ``SeqIO.write(...)`` to save one record, it
+overwrote the existing data.
 
 The solution is to open and close the file explicitly, using a *file handle*.
 The ``SeqIO`` functions are happy to work with either filenames (strings) or
-file handles, and this is a case where the  more low-level handle is useful.
+file handles, and this is a case where the more low-level handle is useful.
 
 Here's a working version of the script, save this as ``length_filter.py``:
 
@@ -231,3 +231,58 @@ don't end with a "*"?
 (and save the original record unchanged if it does not end with "*"). The sample
 solution is called ``cut_final_star.py`` instead.
 
+
+------------------------
+Filtering by record name
+------------------------
+
+A very common task is pulling out particular sequences from a large sequence
+file. Membership testing with Python lists (or sets) is one neat way to do
+this. Recap:
+
+.. sourcecode:: pycon
+
+    >>> wanted_ids = ["PGSC0003DMP400019313", "PGSC0003DMP400020381", "PGSC0003DMP400020972"]
+    >>> "PGSC0003DMP400067339" in wanted_ids
+    False
+    >>> "PGSC0003DMP400020972" in wanted_ids
+    True
+
+*Exercise*: Guided by the ``filter_length.py`` script, write a new script
+starting as follows which writes out the potato proteins on this list:
+
+.. sourcecode:: python
+
+    from Bio import SeqIO
+    wanted_ids = ["PGSC0003DMP400019313", "PGSC0003DMP400020381", "PGSC0003DMP400020972"]
+    input_filename = "PGSC_DM_v3.4_pep_representative.fasta"
+    output_filename = "wanted_potato_proteins.fasta"
+    count = 0
+    total = 0
+    output_handle = open(output_filename, "w")
+    # ...
+    # Your code here
+    # ...
+    output_handle.close()
+    print(str(count) + " records selected out of " + str(total))
+
+The sample solution is called ``filter_wanted_ids.py``, and the output should be:
+
+.. sourcecode:: console
+
+    $ python filter_wanted_id.py
+    3 records selected out of 39031
+
+*Advanced Excerise*: Modify this to read the list of wanted identifiers from
+a plain text input file (one identifier per line).
+
+*Discussion*: What happens if a wanted identifier is not in the input file?
+What happens if an identifer appears twice? What order is the output file?
+
+------------------------
+Selecting by record name
+------------------------
+
+In the previous example, we used ``SeqIO.parse(...)`` to loop over the input
+FASTA file. This means the output order will be dictated by the input sequence
+file's order. What if you want the records in the specified order?
