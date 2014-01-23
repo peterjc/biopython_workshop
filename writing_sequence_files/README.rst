@@ -87,7 +87,7 @@ you'd do this explictly:
 Previously we'd always used the results from ``SeqIO.parse(...)`` in a for
 loop - but here the for loop happens inside the ``SeqIO.write(...)`` function.
 
-*Exercise:* Check this does the same as the ``SeqIO.convert(...)`` version above.
+**Exercise**: Check this does the same as the ``SeqIO.convert(...)`` version above.
 
 The ``SeqIO.write(...)`` function is happy to be given multiple records
 like this, or simply as a list of ``SeqRecord`` objects. You can also give
@@ -191,3 +191,43 @@ creating and replacing several thousand small files is slow):
     3719
 
 Yay!
+
+
+-----------------
+Editing sequences
+-----------------
+
+One of the examples in the `previous section <../reading_sequence_files/README.rst>`_
+looked at the potato protein sequences, and that they all had a terminal "*"
+character (stop codon). Both Python strings and Biopython ``SeqRecord`` objects
+can be *sliced* to extract a sub-sequence or partial record. In this case,
+we want to take everything up to but excluding the final letter:
+
+.. sourceode: pycon
+
+    >>> my_seq = "MTAIVIGAKILGIIYSSPQLRKCNSATQNDHSDLQISFWKDHLRQCTTNS*"
+    >>> cut_seq = my_seq[:-1] # remove last letter
+    >>> print(cut_seq)
+    MTAIVIGAKILGIIYSSPQLRKCNSATQNDHSDLQISFWKDHLRQCTTNS
+
+Consider the following example (which I'm calling ``cut_star_dangerous.py``):
+
+.. sourcecode:: python
+
+    from Bio import SeqIO
+    input_filename = "PGSC_DM_v3.4_pep_representative.fasta"
+    output_filename = "PGSC_DM_v3.4_pep_rep_no_stars.fasta"
+    output_handle = open(output_filename, "w")
+    for record in SeqIO.parse(input_filename, "fasta"):
+        cut_record = record[:-1] # remove last letter
+        SeqIO.write(cut_record, output_handle, "fasta")
+    output_handle.close()
+
+This should work fine on this potato file... but what might go wrong if you
+used it on another protein file? What happens if (some of) the input records
+don't end with a "*"?
+
+**Exercise**: Modify this example to only remove the last letter if it is a "*"
+(and save the original record unchanged if it does not end with "*"). The sample
+solution is called ``cut_final_star.py`` instead.
+
