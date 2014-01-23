@@ -134,14 +134,16 @@ You might try something like this:
             count = count + SeqIO.write(record, output_filename, "fasta")
     print(str(count) + " records selected out of " + str(total))
 
-Save this as ``length_filter_naive.py``, and run it. What does wrong?
+Save this as ``length_filter_naive.py``, and run it, and check it worked.
 
 .. sourcecode:: console
 
     $ python length_filter_naive.py
     3719 records selected out of 4141
 
-*Discussion:* What goes wrong? Have a look at the output file... Why?
+*Discussion:* What goes wrong and why? Have a look at the output file...
+
+.. sourcecode:: console
 
     $ grep -c "^>" NC_000913_long_only.faa
     1
@@ -157,9 +159,11 @@ the last long sequence in the FASTA file. Why? Because what happened is
 each time round the loop when we called ``SeqIO.write(...)`` to save one
 record, it overwrote the existing data.
 
-The solution is to handle opening and closing the file explicitly, using a
-*file handle*. Here's a working version of the script, save this as
-``length_filter.py``:
+The solution is to open and close the file explicitly, using a *file handle*.
+The ``SeqIO`` functions are happy to work with either filenames (strings) or
+file handles, and this is a case where the  more low-level handle is useful.
+
+Here's a working version of the script, save this as ``length_filter.py``:
 
 .. sourcecode:: python
 
