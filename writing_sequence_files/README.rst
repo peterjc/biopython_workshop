@@ -201,8 +201,8 @@ Editing sequences
 
 One of the examples in the `previous section <../reading_sequence_files/README.rst>`_
 looked at the potato protein sequences, and that they all had a terminal "*"
-character (stop codon). Both Python strings and Biopython ``SeqRecord`` objects
-can be *sliced* to extract a sub-sequence or partial record. In this case,
+character (stop codon). Python strings, Biopython ``Seq`` and ``SeqRecord`` objects
+can all be *sliced* to extract a sub-sequence or partial record. In this case,
 we want to take everything up to but excluding the final letter:
 
 .. sourceode: pycon
@@ -287,4 +287,72 @@ Selecting by record name
 
 In the previous example, we used ``SeqIO.parse(...)`` to loop over the input
 FASTA file. This means the output order will be dictated by the input sequence
-file's order. What if you want the records in the specified order?
+file's order. What if you want the records in the specified order (regardless
+of the order in the FASTA file)?
+
+In this situation, you can't make a single for loop over the FASTA file. For
+a tiny file you could load everything into memory (e.g. as a Python dictionary),
+but that won't work on larger files. Instead, we can use Biopython's
+``SeqIO.index(...)`` function which lets us treat a sequence file like a
+Python dictionary:
+
+.. sourcecode:: pycon
+
+    >>> from Bio import SeqIO
+    >>> filename = "PGSC_DM_v3.4_pep_representative.fasta"
+    >>> fasta_index = SeqIO.index(filename, "fasta")
+    >>> print(str(len(fasta_index)) + " records in " + filename)
+    >>> "PGSC0003DMP400019313" in fasta_index
+    True
+    >>> record = fasta_index["PGSC0003DMP400019313"]
+    >>> print(record)
+    ID: PGSC0003DMP400019313
+    Name: PGSC0003DMP400019313
+    Description: PGSC0003DMP400019313 PGSC0003DMT400028369 Protein
+    Number of features: 0
+    Seq('MSKSLYLSLFFLSFVVALFGILPNVKGNILDDICPGSFFPPLCFQMLRNDPSVS...LK*', SingleLetterAlphabet())
+
+*Excercise*: Write a new version of your ``count_fasta.py`` script using
+``SeqIO.index(...)`` instead of ``SeqIO.parse(...)`` and a for loop.
+Which is faster?
+
+*Excercise*: Complete the following script (which I've called to use ``SeqIO.index(...)``
+to make a FASTA file with records of interest *in the given order*:
+
+    from Bio import SeqIO
+    wanted_ids = ["PGSC0003DMP400019313", "PGSC0003DMP400020381", "PGSC0003DMP400020972"]
+    input_filename = "PGSC_DM_v3.4_pep_representative.fasta"
+    output_filename = "wanted_potato_proteins_in_order.fasta"
+    fasta_index = SeqIO.index(input_filename, "fasta")
+    count = 0
+    total = # Your code here, get total from fasta_index
+    output_handle = open(output_filename, "w")
+    for identifier in wanted_ids:
+        # ...
+        # Your code here, get the record for the identifier, and write it out
+        # ...
+    output_handle.close()
+    print(str(count) + " records selected out of " + str(total))
+
+I called this script ``filter_wanted_id_in_order.py`` and the output should be:
+
+.. sourcecode:: console
+
+    $ python filter_wanted_id_in_order.py
+    3 records selected out of 39031
+
+
+Now compare the outfile files from the two approaches:
+
+.. sourcecode:: console
+
+    $ grep "^>" wanted_potato_proteins.fasta
+    >PGSC0003DMP400020381 PGSC0003DMT400029984 Protein
+    >PGSC0003DMP400020972 PGSC0003DMT400030871 Protein
+    >PGSC0003DMP400019313 PGSC0003DMT400028369 Protein
+    $ grep "^>" wanted_potato_proteins_in_order.fasta 
+    >PGSC0003DMP400019313 PGSC0003DMT400028369 Protein
+    >PGSC0003DMP400020381 PGSC0003DMT400029984 Protein
+    >PGSC0003DMP400020972 PGSC0003DMT400030871 Protein
+
+The second file has the order specified in the Python list.
