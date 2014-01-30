@@ -318,13 +318,50 @@ What should we do to 'fix' the problems?
 Single Records
 --------------
 
-Introduct ``SeqIO.read(...)`` using the whole genome FASTA file for *E. coli* K12.
+One of the example FASTA files for *E. coli* K12 is the a single long sequence
+for the entire (circular) genome, file ``NC_000913.fna``. We can still use a
+for loop and ``SeqIO.parse(...)`` but it can feel awkward. Instead, for the
+special case where the sequence file contains one and only one record, you
+can use ``SeqIO.read(...)``.
+
+.. sourcecode:: pycon
+
+    >>> from Bio import SeqIO
+    >>> record = SeqIO.read("NC_000913.fna", "fasta")
+    >>> print(record.id + " length " + str(len(record)))
+    gi|556503834|ref|NC_000913.3| length 4641652
+
+*Exercise*: Try using ``SeqIO.read(...)`` on one of the protein files.
+What happens?
 
 ----------------------
 Different File Formats
 ----------------------
 
-Use the GenBank example file for *E. coli* K12.
+So far we've only been using FASTA format files, which is why when we've called
+``SeqIO.parse(...)`` or ``SeqIO.read(...)`` the second argument has been ``"fasta"``.
+The Biopython ``SeqIO`` module supports quite a few other important sequence file
+formats (see the table on the `SeqIO wiki page <http://biopython.org/wiki/SeqIO>`_).
+
+If you work with finished genomes, you'll often see nicely annotated files in
+the EMBL or GenBank format. Let's try this with the *E. coli* K12 GenBank file,
+``NC_000913.gbk``, based on the previous example:
+
+.. sourcecode::	pycon
+
+    >>> from Bio import SeqIO
+    >>> fasta_record = SeqIO.read("NC_000913.fna", "fasta")
+    >>>	print(fasta_record.id + " length " + str(len(fasta_record)))
+    gi|556503834|ref|NC_000913.3| length 4641652
+    >>> genbank_record = SeqIO.read("NC_000913.gbk", "genbank")
+    >>>	print(genbank_record.id + " length " + str(len(genbank_record)))
+    NC_000913.3 length 4641652
+
+All we needed to change was the file format argument to the ``SeqIO.read(...)``
+function - and we could load a GenBank file instead. You'll notice the GenBank
+version has given a shorter identifier, and took longer to load. The reason is
+that there is a lot more information present - most importantly lots of features
+(where each gene is and so on).
 
 ===================================
 Writing Sequence Files in Biopython
