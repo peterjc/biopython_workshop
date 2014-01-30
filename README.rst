@@ -23,6 +23,7 @@ Workshop Sections
 
 * `Reading sequence files <reading_sequence_files/README.rst>`_.
 * `Writing sequence files <writing_sequence_files/README.rst>`_.
+* `Reading and writing alignment files <reading_writing_alignments/README.rst>`_.
 
 ========
 Notation
