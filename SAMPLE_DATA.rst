@@ -51,3 +51,26 @@ Once downloaded, decompress the ZIP file using the ``unzip`` command:
 
     $ unzip PGSC_DM_v3.4_pep_representative.fasta.zip
 
+--------------
+Pfam Alignment
+--------------
+
+This example is a little different as by default wget and curl will name
+the saved file something annoying like ```format?format=stockholm`` based
+on the last part of the URL. We therefore set the desired output filename
+explicitly.
+
+On Linux at the command line using wget:
+
+.. sourcecode:: console
+
+    $ wget -O "PF08792_seed.sth" http://pfam.sanger.ac.uk/family/PF08792/alignment/seed/format?format=stockholm
+
+On Mac OS X using curl you can set the saved filename as follows:
+
+.. sourcecode:: console
+
+    $ curl -o "PF08792_seed.sth" http://pfam.sanger.ac.uk/family/PF08792/alignment/seed/format?format=stockholm
+
+Note the the output filename option is in upper case for wget, but
+confusingly is lower case for curl.
