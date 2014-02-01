@@ -17,6 +17,109 @@ These examples use a number of real example sequence alignment
 files, how to obtain these is described in the `sample data
 <../SAMPLE_DATA.rst>`_ instructions.
 
+We're going to look at a small seed alignment for one of the PFAM
+domains, the `A2L zinc ribbon domain (A2L_zn_ribbon; PF08792)
+<http://pfam.sanger.ac.uk/family/PF08792>`_. This was picked
+almost at random - it is small enough to see the entire alignment
+on screen, and has some obvious gap-rich columns.
+
+From the alignments tab on the Pfam webpage, you can download
+the raw alignment in several different formats (Selex, Stockholm,
+FASTA, and MSF). Biopython is able to work with FASTA (very simple)
+and Stockholm format (richly annotated).
+
+--------------------------
+Loading a single Alignment
+--------------------------
+
+As in ``SeqIO``, under ``AlignIO`` we have both ``AlignIO.parse(...)``
+for looping over multiple alignments, and ``AlignIO.read(...)`` for
+loading a single alignment. This is the more commonly used choice:
+
+.. sourcecode:: pycon
+
+    >>> from Bio import AlignIO
+    >>> alignment = AlignIO.read("PF08792_seed.sth", "stockholm")
+    >>> print(alignment)
+    SingleLetterAlphabet() alignment with 14 rows and 37 columns
+    SIPVVCT---CGNDKDFY--KDDDIYICQLCNAETVK VF282_IIV6/150-181
+    DIIENCKY--CGSFDIE---KVKDIYTCGDCTQTYTT Q9YW27_MSEPV/2-33
+    SDNIKCKY--CNSFNII---KNKDIYSCCDCSNCYTT Q9EMK1_AMEPV/2-33
+    AQDWRCDD--CNATLVYV--KKDAQRVCLECGKSTFF Q6XM16_9PHYC/83-115
+    SKEWICEV--CNKELVYI--RKDAERVCPDCGLSHPY Q8QNH7_ESV1K/101-133
+    NDDSKCIK--CGGPVLMQ--AARSLLNCQECGYSAAV Q4A276_EHV8U/148-180
+    KSQNVCSVPDCDGEKILN--QNDGYMVCKKCGFSEPI YR429_MIMIV/213-247
+    LKYKECKY--CHTDMVFN--TTQFGLQCPNCGCIQEL VF385_ASFB7/145-177
+    RNLKSCSN--CKHNGLI---TEYNHEFCIFCQSVFQL Q6VZA9_CNPV/2-33
+    MNLRMCGG--CRRNGLV---SDADYEFCLFCETVFPM Q6TVP3_ORFSA/1-32
+    MNLRLCSG--CRHNGIV---SEQGYEYCIFCESVFQK VLTF3_VACCC/1-32
+    MNLKMCSG--CSHNGIV---SEHGYEFCIFCESIFQS Q8V3K7_SWPV1/1-32
+    NALRHCHG--CKHNGLV---LEQGYEFCIFCQAVFQH O11357_MCV1/5-36
+    DQIYTCT---CGGQMELWVNSTQSDLVCNECGATQPY Y494R_PBCV1/148-181
+
+Printing a Biopython alignment object will give you a display
+like this (truncated for larger alignments).
+
+In many ways, the alignment acts like a list of ``SeqRecord``
+objects (just like you would get from ``SeqIO``). The length
+of the alignment is the number of rows for example, and you
+can loop over the rows as individual ``SeqRecord`` objects:
+
+.. sourcecode:: pycon
+
+    >>> print(len(alignment))
+    14
+    >>> for record in 
+    >>> for record in alignment:
+    ...     print(record.id + " has " + str(record.seq.count("-")) + " gaps")
+    ... 
+    VF282_IIV6/150-181 has 5 gaps
+    Q9YW27_MSEPV/2-33 has 5 gaps
+    Q9EMK1_AMEPV/2-33 has 5 gaps
+    Q6XM16_9PHYC/83-115 has 4 gaps
+    Q8QNH7_ESV1K/101-133 has 4 gaps
+    Q4A276_EHV8U/148-180 has 4 gaps
+    YR429_MIMIV/213-247 has 2 gaps
+    VF385_ASFB7/145-177 has 4 gaps
+    Q6VZA9_CNPV/2-33 has 5 gaps
+    Q6TVP3_ORFSA/1-32 has 5 gaps
+    VLTF3_VACCC/1-32 has 5 gaps
+    Q8V3K7_SWPV1/1-32 has 5 gaps
+    O11357_MCV1/5-36 has 5 gaps
+    Y494R_PBCV1/148-181 has 3 gaps
+
+*Exercise*: Write a python script called ``count_gaps.py`` which
+reports the number or records, the total number of gaps, and the
+mean (average) number of gaps per record:
+
+.. sourcecode:: console
+
+    $ python count_gaps.py
+    PF08792_seed.sth had 14 records,
+    Total gaps 61, average per record 4.35714285714
+
+*Tip*: If you get zero as the average, and are using Python 2,
+add the following special import line to get natural division:
+
+.. sourcecode:: python
+
+    from __future__ import division
+
+----------------
+Sorting the rows
+----------------
+
+Downloading from Pfam gives you the option of picking the order
+the rows appear in - by default this is according to the *tree*
+order (clustering similar sequences together), but it can also
+be *alphabetical* (using the identifiers).
+
+We download the file using the tree order, but here is how you
+can sort the rows within Biopython:
+
+
+
+
 =========================================
 Writing Multiple-sequence Alignment Files
 =========================================
