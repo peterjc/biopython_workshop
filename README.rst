@@ -27,6 +27,14 @@ The examples use a number of `sample data files <SAMPLE_DATA.rst>`_.
 * `Writing sequence files <writing_sequence_files/README.rst>`_.
 * `Reading and writing alignment files <reading_writing_alignments/README.rst>`_.
 
+This material focuses on Biopython's `SeqIO <http://biopython.org/wiki/SeqIO>`_
+and `AlignIO <http://biopython.org/wiki/AlignIO>`_ modules (these links
+include an overview and tables of supported file formats), each of which
+also has a whole chapter in the `Biopython Tutorial & Cookbook
+<http://biopython.org/DIST/docs/tutorial/Tutorial.html>`_
+(`PDF <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_)
+which would be worth reading after this workshop to learn more.
+
 ========
 Notation
 ========
