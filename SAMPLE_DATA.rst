@@ -43,7 +43,7 @@ the doubled monoploid *Solanum tuberosum* group Phureja clone DM1-3:
     $ wget http://potato.plantbiology.msu.edu/data/PGSC_DM_v3.4_pep_representative.fasta.zip
 
 For anyone working on Mac OS X, the ``wget`` command is not installed by default. As noted
-above you can use ``curl -O http://...``` instead.
+above you can use ``curl -O http://...`` instead.
 
 Once downloaded, decompress the ZIP file using the ``unzip`` command:
 
