@@ -7,6 +7,9 @@ The primary module we'll be using is `Bio.SeqIO <http://biopython.org/wiki/SeqIO
 which is short for sequence input/output (following the naming convention set by
 `BioPerl's SeqIO module <http://bioperl.org/wiki/HOWTO:SeqIO>`_).
 
+These examples use a number of real example sequence files, how to obtain these
+is described in the `sample data <../SAMPLE_DATA.rst>`_ instructions.
+
 -------------
 Built-in Help
 -------------
