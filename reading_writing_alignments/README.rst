@@ -88,7 +88,7 @@ can loop over the rows as individual ``SeqRecord`` objects:
     O11357_MCV1/5-36 has 5 gaps
     Y494R_PBCV1/148-181 has 3 gaps
 
-*Exercise*: Write a python script called ``count_gaps.py`` which
+**Exercise**: Write a python script called ``count_gaps.py`` which
 reports the number or records, the total number of gaps, and the
 mean (average) number of gaps per record:
 
@@ -105,6 +105,38 @@ add the following special import line to get natural division:
 
     from __future__ import division
 
+=========================================
+Writing Multiple-sequence Alignment Files
+=========================================
+
+As you might guess from using ``SeqIO.convert(...)`` and
+``SeqIO.write(...)``, there are matching ``AlignIO.convert()``
+and ``AlignIO.write(...)`` functions.
+
+For example, this will convert the Stockholm formatted alignment
+into a relaxed PHYLIP format file:
+
+.. sourcecode:: python
+
+    from Bio import AlignIO
+    input_filename = "PF08792_seed.sth"
+    output_filename = "PF08792_seed_converted.phy"
+    AlignIO.convert(input_filename, "stockholm", output_filename, "phylip-relaxed")
+
+**Exercise**: Modify this example to convert the Stockholm file
+into a FASTA alignment file.
+
+This ``AlignIO.convert(...)``  example is equivalent to using
+``AlignIO.read(...)`` and ``AlignIO.write(...)`` explicitly:
+
+.. sourcecode:: python
+
+    from Bio import AlignIO
+    input_filename = "PF08792_seed.sth"
+    output_filename = "PF08792_seed_converted.phy"
+    alignment = AlignIO.read(input_filename, "stockholm")
+    AlignIO.write(alignment, output_filename, "phylip-relaxed")
+
 ----------------
 Sorting the rows
 ----------------
@@ -115,14 +147,66 @@ order (clustering similar sequences together), but it can also
 be *alphabetical* (using the identifiers).
 
 We download the file using the tree order, but here is how you
-can sort the rows within Biopython:
+can sort the rows by identifier within Biopython:
 
+.. sourcecode:: pycon
 
+    >>> from Bio import AlignIO
+    >>> alignment = AlignIO.read("PF08792_seed.sth", "stockholm")
+    >>> alignment.sort()
+    >>> print(alignment)
+    SingleLetterAlphabet() alignment with 14 rows and 37 columns
+    NALRHCHG--CKHNGLV---LEQGYEFCIFCQAVFQH O11357_MCV1/5-36
+    NDDSKCIK--CGGPVLMQ--AARSLLNCQECGYSAAV Q4A276_EHV8U/148-180
+    MNLRMCGG--CRRNGLV---SDADYEFCLFCETVFPM Q6TVP3_ORFSA/1-32
+    RNLKSCSN--CKHNGLI---TEYNHEFCIFCQSVFQL Q6VZA9_CNPV/2-33
+    AQDWRCDD--CNATLVYV--KKDAQRVCLECGKSTFF Q6XM16_9PHYC/83-115
+    SKEWICEV--CNKELVYI--RKDAERVCPDCGLSHPY Q8QNH7_ESV1K/101-133
+    MNLKMCSG--CSHNGIV---SEHGYEFCIFCESIFQS Q8V3K7_SWPV1/1-32
+    SDNIKCKY--CNSFNII---KNKDIYSCCDCSNCYTT Q9EMK1_AMEPV/2-33
+    DIIENCKY--CGSFDIE---KVKDIYTCGDCTQTYTT Q9YW27_MSEPV/2-33
+    SIPVVCT---CGNDKDFY--KDDDIYICQLCNAETVK VF282_IIV6/150-181
+    LKYKECKY--CHTDMVFN--TTQFGLQCPNCGCIQEL VF385_ASFB7/145-177
+    MNLRLCSG--CRHNGIV---SEQGYEYCIFCESVFQK VLTF3_VACCC/1-32
+    DQIYTCT---CGGQMELWVNSTQSDLVCNECGATQPY Y494R_PBCV1/148-181
+    KSQNVCSVPDCDGEKILN--QNDGYMVCKKCGFSEPI YR429_MIMIV/213-247
 
+*Exercise*: Write a Python script ``sort_alignment_by_id.py``
+which uses ``AlignIO.read(..)`` and ``AlignIO.write(..)``
+to convert ``PF08792_seed.sth`` into a sorted FASTA file.
 
-=========================================
-Writing Multiple-sequence Alignment Files
-=========================================
+By default the alignment's sort method uses the identifers as
+the sort key, but much like how sorting a Python list works,
+you can override this.
 
-As you might guess from using ``SeqIO.write(...)``, there is a
-matching ``AlignIO.write(...)`` function.
+*Advanced Exercise*: Define your own function taking a single
+argument (a ``SeqRecord``) which returns the number of gaps
+in the sequence. Use this to sort the alignment and print it
+to screen (or save it as a new file):
+
+.. sourcecode:: python
+
+    def count_gaps(record):
+    	"""Counts number of gaps in record's sequence"""
+        return # Fill in code
+
+    alignment.sort(key=count_gaps)
+
+.. sourcecode:: console
+
+    $ python sort_gaps.py
+    SingleLetterAlphabet() alignment with 14 rows and 37 columns
+    KSQNVCSVPDCDGEKILN--QNDGYMVCKKCGFSEPI YR429_MIMIV/213-247
+    DQIYTCT---CGGQMELWVNSTQSDLVCNECGATQPY Y494R_PBCV1/148-181
+    AQDWRCDD--CNATLVYV--KKDAQRVCLECGKSTFF Q6XM16_9PHYC/83-115
+    SKEWICEV--CNKELVYI--RKDAERVCPDCGLSHPY Q8QNH7_ESV1K/101-133
+    NDDSKCIK--CGGPVLMQ--AARSLLNCQECGYSAAV Q4A276_EHV8U/148-180
+    LKYKECKY--CHTDMVFN--TTQFGLQCPNCGCIQEL VF385_ASFB7/145-177
+    SIPVVCT---CGNDKDFY--KDDDIYICQLCNAETVK VF282_IIV6/150-181
+    DIIENCKY--CGSFDIE---KVKDIYTCGDCTQTYTT Q9YW27_MSEPV/2-33
+    SDNIKCKY--CNSFNII---KNKDIYSCCDCSNCYTT Q9EMK1_AMEPV/2-33
+    RNLKSCSN--CKHNGLI---TEYNHEFCIFCQSVFQL Q6VZA9_CNPV/2-33
+    MNLRMCGG--CRRNGLV---SDADYEFCLFCETVFPM Q6TVP3_ORFSA/1-32
+    MNLRLCSG--CRHNGIV---SEQGYEYCIFCESVFQK VLTF3_VACCC/1-32
+    MNLKMCSG--CSHNGIV---SEHGYEFCIFCESIFQS Q8V3K7_SWPV1/1-32
+    NALRHCHG--CKHNGLV---LEQGYEFCIFCQAVFQH O11357_MCV1/5-36
