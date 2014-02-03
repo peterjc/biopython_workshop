@@ -41,7 +41,8 @@ For instance,
 
 .. sourcecode:: pycon
 
-    >>> print(record.features[3])
+    >>> my_gene = record.features[3]
+    >>> print(my_gene)
     type: gene
     location: [336:2799](+)
     qualifiers: 
@@ -66,3 +67,83 @@ This is what this gene looks like in the raw GenBank file::
                      /db_xref="GeneID:945803"
 
 Hopefully it is fairly clear how this maps to the ``SeqFeature`` structure.
+The `Biopython Tutorial & Cookbook <http://biopython.org/DIST/docs/tutorial/Tutorial.html>`_
+(`PDF <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_) goes into
+more detail about this - we're going to focus on extracting the sequnce
+associated with a location:
+
+    >>> print(my_gene.location)
+    [336:2799](+)
+    >>> print(my_gene.location.start)
+    336
+    >>> print(my_gene.location.end)
+    2799
+    >>> print(my_gene.location.strand)
+    1
+
+Recall in the GenBank file this simple location was ``337..2799``, yet
+in Biopython this has become a start value of ``336`` and ``2799`` as the
+end. The reason for this is to match how Python counting work, in particular
+string slicing:
+
+.. sourcecode:: pycon
+
+    >>> gene_seq = record.seq[336:2799]
+    >>> len(gene_seq)
+    2463
+    >>> print(gene_seq)
+    ...
+
+This was a very simple location on the forward strand, if it had been on
+the reverse strand you'd need to take the reverse-complement. Also if the
+location had been a more complicated compound location like a *join* (used
+for eukaryotic genes where the CDS is made up of several exons), then the
+location would have-sub parts to consider.
+
+All these complications are taken care of for you via the ``.extract(...)``
+method which takes the full length parent record's sequence as an argument:
+
+.. sourcecode:: pycon
+
+    >>> gene_seq = my_gene.extract(record.seq)
+    >>> len(gene_seq)
+    2463
+    >>> print(gene_seq)
+    ...
+
+Note you can also take the length of the feature directly (or the feature's
+``.location``) and get the same answer:
+
+    >>> len(my_gene)
+    2463
+
+This example loops over all the features looking for gene records, and
+calculates their total length:
+
+.. sourcecode:: python
+
+    from Bio import SeqIO
+    record = SeqIO.read("NC_000913.gbk", "genbank")
+    total = 0
+    for feature in record.features:
+        if feature.type == "gene":
+            total = total + len(feature)
+    print("Total length of all genes is " + str(total))
+
+.. sourcecode:: console
+
+    $ python count_gene_lengths.py
+    Total length of genome is 4641652
+    Total length of all genes is 4137243
+
+*Exercise*: Give a separate count for each feature type. Use a dictionary
+where the keys are the feature type (e.g. "gene" and "CDS") and the values
+are the count for that type.
+
+**Discussion**: What proportion of the genome is annotated as gene coding?
+What assumptions does this estimate 89% make:
+
+.. sourcecode:: pycon
+
+    >>> 4137243 * 100.0 / 4641652
+    89.13298541122859
