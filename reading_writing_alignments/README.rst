@@ -33,8 +33,14 @@ Loading a single Alignment
 --------------------------
 
 As in ``SeqIO``, under ``AlignIO`` we have both ``AlignIO.parse(...)``
-for looping over multiple alignments, and ``AlignIO.read(...)`` for
-loading a single alignment. This is the more commonly used choice:
+for looping over multiple separate alignments, and ``AlignIO.read(...)``
+for loading a file containing a single alignment.
+
+Most of the time you will be working with alignment files which contain
+a single alignment, so normally you will use ``AlignIO.read(..)``.
+
+Here is an example loading the Pfam seed alignment for the `A2L zinc ribbon
+domain (A2L_zn_ribbon; PF08792) <http://pfam.sanger.ac.uk/family/PF08792>`_:
 
 .. sourcecode:: pycon
 
@@ -57,8 +63,8 @@ loading a single alignment. This is the more commonly used choice:
     NALRHCHG--CKHNGLV---LEQGYEFCIFCQAVFQH O11357_MCV1/5-36
     DQIYTCT---CGGQMELWVNSTQSDLVCNECGATQPY Y494R_PBCV1/148-181
 
-Printing a Biopython alignment object will give you a display
-like this (truncated for larger alignments).
+Printing a Biopython alignment object will give you a display as above
+(but truncated for larger alignments).
 
 In many ways, the alignment acts like a list of ``SeqRecord``
 objects (just like you would get from ``SeqIO``). The length
@@ -136,6 +142,9 @@ This ``AlignIO.convert(...)``  example is equivalent to using
     output_filename = "PF08792_seed_converted.phy"
     alignment = AlignIO.read(input_filename, "stockholm")
     AlignIO.write(alignment, output_filename, "phylip-relaxed")
+
+This form is most useful if you wish to modify the alignment in some way,
+which we will do next.
 
 ----------------
 Sorting the rows
