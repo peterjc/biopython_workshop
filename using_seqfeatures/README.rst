@@ -69,9 +69,22 @@ This is what this gene looks like in the raw GenBank file::
 Hopefully it is fairly clear how this maps to the ``SeqFeature`` structure.
 The `Biopython Tutorial & Cookbook <http://biopython.org/DIST/docs/tutorial/Tutorial.html>`_
 (`PDF <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_) goes into
-more detail about this - we're going to focus on extracting the sequnce
-associated with a location:
+more detail about this.
 
+-----------------
+Feature Locations
+-----------------
+
+We're going to focus on using the location information for different feature
+types. Continuing with the same example:
+
+.. sourcecode:: pycon
+
+    >>> from Bio import SeqIO
+    >>> record = SeqIO.read("NC_000913.gbk", "genbank")
+    >>> my_gene = record.features[3]
+    >>> print(my_gene.qualifiers["locus_tag"])
+    ['b0002']
     >>> print(my_gene.location)
     [336:2799](+)
     >>> print(my_gene.location.start)
@@ -82,9 +95,10 @@ associated with a location:
     1
 
 Recall in the GenBank file this simple location was ``337..2799``, yet
-in Biopython this has become a start value of ``336`` and ``2799`` as the
-end. The reason for this is to match how Python counting work, in particular
-string slicing:
+in Biopython this has become a start value of 336 and 2799 as the end.
+The reason for this is to match how Python counting works, in particular
+how Python string slicing. In order to pull out this sequence from the full
+genome we need to use slice values of 336 and 2799:
 
 .. sourcecode:: pycon
 
@@ -111,13 +125,56 @@ method which takes the full length parent record's sequence as an argument:
     >>> print(gene_seq)
     ...
 
-Note you can also take the length of the feature directly (or the feature's
-``.location``) and get the same answer:
+**Exercise**: Finish the following script by setting an appropriate
+feature name like the locus tag or GI number (use the ``.qualifiers``
+or ``.dbxrefs`` information) to extract all the coding sequences from
+the GenBank file:
+
+.. sourcecode:: python
+
+    from Bio import SeqIO
+    record = SeqIO.read("NC_000913.gbk", "genbank")
+    output_handle = open("NC_000913_cds.fasta", "w")
+    count = 0
+    for feature in record.features:
+        if feature.type == "CDS":
+            count = count + 1
+            feature_name = "..." # Use feature.qualifiers or feature.dbxrefs here
+            feature_seq = feature.extract(record.seq)
+            # Simple FASTA output without line wrapping:
+            output_handle.write(">" + feature_name + "\n" + str(feature_seq) + "\n")
+    output_handle.close()
+    print(str(count) + " CDS sequences extracted")
+
+.. sourcecode:: console
+
+    $ python extract_cds.py 
+    4321 CDS sequences extracted
+
+Check your sequences using the NCBI provided FASTA file ``NC_000913.ffn``.
+
+**Advanced exercise**: Can you recreate the NCBI naming scheme as used
+in ``NC_000913.ffn``?
+
+**Advanced exercise**: Using the Biopython documentation, can you create
+a new ``SeqRecord`` object and then use ``SeqIO.write(...)`` which will
+produce line-wrapped FASTA output.
+
+---------------
+Feature Lengths
+---------------
+
+The length of Biopython's ``SeqFeature`` objects (and the location objects)
+is defined as the length of the sequence region they describe (i.e. how
+many bases are includied; or for protein annotation how many amino acids).
 
 .. sourcecode:: pycon
 
     >>> len(my_gene)
     2463
+
+Remember when we checked the length of ``my_gene.extract(record.seq)``
+that also gave 2463.
 
 This example loops over all the features looking for gene records, and
 calculates their total length:
@@ -203,3 +260,41 @@ to count the number of bases in the *gene* features.
 Which is a better estimate of the proportion of the genome which encodes genes?
 When might these methods give very different answers? Any virologists in the group?
 How should this be defined given that any single base may be in more than one gene?
+
+------------------------
+Translating CDS features
+------------------------
+
+When dealing with GenBank files and trying to get the protein sequence of the
+genes, you'll need to look at the CDS features (coding sequences) -- not the
+gene features (although for simple cases they'll have the same location).
+
+Sometimes, as in the *E. coli* exmaple, you will find the translation is
+provided in the qualifiers:
+
+    >>> from Bio import SeqIO
+    >>> record = SeqIO.read("NC_000913.gbk", "genbank")
+    >>> my_cds = record.features[4]
+    >>> print(my_cds.qualifiers["locus_tag"])
+    ['b0002']
+    >>> print(my_cds.qualifiers["translation"])
+    ['MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALPNI...KLGV']
+
+This has been truncated for display here - the whole protein sequence is
+present. However, many times the annotation will not include the amino acid
+translation - but we can get it by translating the nucleotide sequence.
+
+    >>>	print(cds_seq.translate(table=11))
+    >>> protein_seq = cds_seq.translate(table=11)
+    >>>	len(protein_seq)
+    821
+    >>> print(protein_seq)
+    MRVLKFGGTSVANAERFLRVADILESNARQGQVATVLSAPAKITNHLVAMIEKTISGQDALPNI...KLGV*
+
+Notice because this is a bacteria, we used the NCBI translation table 11,
+rather than the default (suitable for humans etc).
+
+**Advanced Exercise**: Using this information, and the CDS extraction script
+from earlier, translate all the CDS features into a FASTA file.
+
+Check your sequences using the NCBI provided FASTA file ``NC_000913.faa``.
