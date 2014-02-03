@@ -114,6 +114,8 @@ method which takes the full length parent record's sequence as an argument:
 Note you can also take the length of the feature directly (or the feature's
 ``.location``) and get the same answer:
 
+.. sourcecode:: pycon
+
     >>> len(my_gene)
     2463
 
@@ -140,10 +142,6 @@ calculates their total length:
 where the keys are the feature type (e.g. "gene" and "CDS") and the values
 are the count for that type.
 
-**Exercise**: Extend the previous script to also count the number of
-features of each type, and report this and the average length of that
-feature type.
-
 **Discussion**: What proportion of the genome is annotated as gene coding?
 What assumptions does this estimate 89% make:
 
@@ -151,3 +149,29 @@ What assumptions does this estimate 89% make:
 
     >>> 4137243 * 100.0 / 4641652
     89.13298541122859
+
+**Exercise**: Extend the previous script to also count the number of
+features of each type, and report this and the average length of that
+feature type. e.g.
+
+.. sourcecode:: console
+
+    $ python total_feature_lengths.py
+    Total length of genome is 4641652
+    misc_feature
+     - total number: 13686
+     - total length: 6136082
+     - average length: 448.347362268
+    mobile_element
+     - total number: 49
+     - total length: 50131
+     - average length: 1023.08163265
+    ...
+
+**Discussion**: What proportion of the genome is annotated with *misc_feature*?
+Does this simple calculation give a meaningful answer?
+
+.. sourcecode:: pycon
+
+    >>> 6136082 * 100.0 / 4641652
+    132.19608018869144
