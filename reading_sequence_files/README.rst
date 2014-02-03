@@ -362,9 +362,10 @@ the EMBL or GenBank format. Let's try this with the *E. coli* K12 GenBank file,
 
 All we needed to change was the file format argument to the ``SeqIO.read(...)``
 function - and we could load a GenBank file instead. You'll notice the GenBank
-version has given a shorter identifier, and took longer to load. The reason is
+version was given a shorter identifier, and took longer to load. The reason is
 that there is a lot more information present - most importantly lots of features
-(where each gene is and so on).
+(where each gene is and so on). We'll return to this in a later section,
+`working with sequence features <../using_seqfeatures/README.rst>`_.
 
 ===================================
 Writing Sequence Files in Biopython

@@ -25,6 +25,7 @@ The examples use a number of `sample data files <SAMPLE_DATA.rst>`_.
 
 * `Reading sequence files <reading_sequence_files/README.rst>`_.
 * `Writing sequence files <writing_sequence_files/README.rst>`_.
+* `Working with sequence features <using_seqfeatures/README.rst>`_.
 * `Reading and writing alignment files <reading_writing_alignments/README.rst>`_.
 
 This material focuses on Biopython's `SeqIO <http://biopython.org/wiki/SeqIO>`_
