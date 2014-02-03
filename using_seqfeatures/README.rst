@@ -140,6 +140,10 @@ calculates their total length:
 where the keys are the feature type (e.g. "gene" and "CDS") and the values
 are the count for that type.
 
+**Exercise**: Extend the previous script to also count the number of
+features of each type, and report this and the average length of that
+feature type.
+
 **Discussion**: What proportion of the genome is annotated as gene coding?
 What assumptions does this estimate 89% make:
 
