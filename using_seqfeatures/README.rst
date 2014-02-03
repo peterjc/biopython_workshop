@@ -132,11 +132,11 @@ calculates their total length:
 
 .. sourcecode:: console
 
-    $ python count_gene_lengths.py
+    $ python total_gene_lengths.py
     Total length of genome is 4641652
     Total length of all genes is 4137243
 
-*Exercise*: Give a separate count for each feature type. Use a dictionary
+**Exercise**: Give a separate count for each feature type. Use a dictionary
 where the keys are the feature type (e.g. "gene" and "CDS") and the values
 are the count for that type.
 
