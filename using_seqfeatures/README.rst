@@ -175,3 +175,31 @@ Does this simple calculation give a meaningful answer?
 
     >>> 6136082 * 100.0 / 4641652
     132.19608018869144
+
+This is an alternative approach, using some more advanced bits of Python like
+the set datatype, and the concept of iterating over the bases within a feature:
+
+.. sourcecode:: pycon
+
+    >>> from Bio import SeqIO
+    >>> record = SeqIO.read("NC_000913.gbk", "genbank")
+    >>> bases = set()
+    >>> for feature in record.features:
+    ...     if feature.type == "misc_feature":
+    ...         bases.update(feature.location)
+    ... 
+    >>> print(len(bases) * 100.0 / len(record))
+    80.69355479471533
+
+**Exercise**: Without worrying to much about how it works, modify this example
+to count the number of bases in the *gene* features.
+
+.. sourcecode:: console
+
+    $ python bases_in_genes.py 
+    88.9494085295
+
+**Discussion**: Compare this calculation (88.95%) to one earlier (89.13%).
+Which is a better estimate of the proportion of the genome which encodes genes?
+When might these methods give very different answers? Any virologists in the group?
+How should this be defined given that any single base may be in more than one gene?
