@@ -165,7 +165,10 @@ This simple example prints out the record identifers and their lengths:
     from Bio import SeqIO
     filename = "NC_000913.faa"
     for record in SeqIO.parse(filename, "fasta"):
-        print("Record " + record.id + ", length " + str(len(record)))
+        print("Record " + record.id + ", length " + str(len(record.seq)))
+
+Notice that given a ``SeqRecord`` object we access the identifer as ``record.id``
+and the sequence object as ``record.seq``.
 
 If you save that as ``record_lengths.py`` and run it you'll get over four thousand
 lines of output:
@@ -183,7 +186,7 @@ lines of output:
     
 The output shown here is truncated!
 
-**Excercise**: Count how many sequences are less than 100 amino acids long.
+**Exercise**: Count how many sequences are less than 100 amino acids long.
 
 **Exercise**: Create a modified script ``total_length.py`` based on the above examples
 which counts the number of records and calculates the total length of all the
@@ -203,7 +206,8 @@ Looking at the sequence
 
 The record identifiers are very important, but more important still is the sequence
 itself. In the ``SeqRecord`` objects the identifiers are stored as standard Python
-strings. For the sequence, Biopython uses a string-like ``Seq`` object.
+strings (e.g. ``.id``). For the sequence, Biopython uses a string-like ``Seq`` object,
+accessed as ``.seq``.
 
 In many ways the ``Seq`` objects act like Python strings, you can print them, take
 their length using the ``len(...)`` function, and slice them with square brackets
