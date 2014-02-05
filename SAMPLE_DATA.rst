@@ -56,7 +56,7 @@ Pfam Alignment
 --------------
 
 This example is a little different as by default wget and curl will name
-the saved file something annoying like ```format?format=stockholm`` based
+the saved file something annoying like ``format?format=stockholm`` based
 on the last part of the URL. We therefore set the desired output filename
 explicitly.
 
