@@ -168,7 +168,8 @@ This simple example prints out the record identifers and their lengths:
         print("Record " + record.id + ", length " + str(len(record.seq)))
 
 Notice that given a ``SeqRecord`` object we access the identifer as ``record.id``
-and the sequence object as ``record.seq``.
+and the sequence object as ``record.seq``. As a shortcut, ``len(record)`` gives
+the sequence length, ``len(record.seq)``.
 
 If you save that as ``record_lengths.py`` and run it you'll get over four thousand
 lines of output:
