@@ -275,7 +275,7 @@ The sample solution is called ``filter_wanted_ids.py``, and the output should be
     $ python filter_wanted_id.py
     3 records selected out of 39031
 
-*Advanced Excerise*: Modify this to read the list of wanted identifiers from
+**Advanced Exerise**: Modify this to read the list of wanted identifiers from
 a plain text input file (one identifier per line).
 
 *Discussion*: What happens if a wanted identifier is not in the input file?
@@ -312,11 +312,11 @@ Python dictionary:
     Number of features: 0
     Seq('MSKSLYLSLFFLSFVVALFGILPNVKGNILDDICPGSFFPPLCFQMLRNDPSVS...LK*', SingleLetterAlphabet())
 
-*Excercise*: Write a new version of your ``count_fasta.py`` script using
+**Exercise**: Write a new version of your ``count_fasta.py`` script using
 ``SeqIO.index(...)`` instead of ``SeqIO.parse(...)`` and a for loop.
 Which is faster?
 
-*Excercise*: Complete the following script (which I've called to use ``SeqIO.index(...)``
+**Exercise**: Complete the following script (which I've called to use ``SeqIO.index(...)``
 to make a FASTA file with records of interest *in the given order*:
 
 .. sourcecode:: python
