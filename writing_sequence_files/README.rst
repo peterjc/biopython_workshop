@@ -142,7 +142,7 @@ Save this as ``length_filter_naive.py``, and run it, and check it worked.
     $ python length_filter_naive.py
     3719 records selected out of 4141
 
-*Discussion:* What goes wrong and why? Have a look at the output file...
+**Discussion:** What goes wrong and why? Have a look at the output file...
 
 .. sourcecode:: console
 
@@ -278,7 +278,7 @@ The sample solution is called ``filter_wanted_ids.py``, and the output should be
 **Advanced Exerise**: Modify this to read the list of wanted identifiers from
 a plain text input file (one identifier per line).
 
-*Discussion*: What happens if a wanted identifier is not in the input file?
+**Discussion**: What happens if a wanted identifier is not in the input file?
 What happens if an identifer appears twice? What order is the output file?
 
 ------------------------
