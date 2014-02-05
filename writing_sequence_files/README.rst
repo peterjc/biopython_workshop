@@ -319,6 +319,8 @@ Which is faster?
 *Excercise*: Complete the following script (which I've called to use ``SeqIO.index(...)``
 to make a FASTA file with records of interest *in the given order*:
 
+.. sourcecode:: python
+
     from Bio import SeqIO
     wanted_ids = ["PGSC0003DMP400019313", "PGSC0003DMP400020381", "PGSC0003DMP400020972"]
     input_filename = "PGSC_DM_v3.4_pep_representative.fasta"
