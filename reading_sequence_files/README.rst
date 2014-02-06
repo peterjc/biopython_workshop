@@ -53,14 +53,8 @@ Sample Data
 -----------
 
 For these examples we're going to use files for the famous bacteria *Esherichia coli*
-K12 (from the NCBI FTP server), and some potato genes from the PGSC:
-
-- ``NC_000913.faa``
-- ``NC_000913.fna``
-- ``NC_000913.ffn``
-- ``PGSC_DM_v3.4_pep_representative.fasta``
-
-See the main README file for instructions for downloading these files.
+K12 (from the NCBI FTP server), and some potato genes from the PGSC - see the
+`sample data instructions <../SAMPLE_DATE.rst>`_ for where to get these.
 
 ----------------
 Counting Records
