@@ -7,8 +7,9 @@ The primary module we'll be using is `Bio.SeqIO <http://biopython.org/wiki/SeqIO
 which is short for sequence input/output (following the naming convention set by
 `BioPerl's SeqIO module <http://bioperl.org/wiki/HOWTO:SeqIO>`_).
 
-These examples use a number of real example sequence files, how to obtain these
-is described in the `sample data <../SAMPLE_DATA.rst>`_ instructions.
+For these examples we're going to use files for the famous bacteria *Esherichia coli*
+K12 (from the NCBI FTP server), and some potato genes from the PGSC - see the
+`sample data instructions <../SAMPLE_DATA.rst>`_ for where to get these.
 
 -------------
 Built-in Help
@@ -47,14 +48,6 @@ would type into Python:
     >>> help(SeqIO.parse)
 
 This gives some examples, and we'll start with something very similar.
-
------------
-Sample Data
------------
-
-For these examples we're going to use files for the famous bacteria *Esherichia coli*
-K12 (from the NCBI FTP server), and some potato genes from the PGSC - see the
-`sample data instructions <../SAMPLE_DATE.rst>`_ for where to get these.
 
 ----------------
 Counting Records
