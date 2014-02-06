@@ -106,6 +106,7 @@ Now let's count the records with Biopython using the ``SeqIO.parse`` function:
     >>> count = 0
     >>> for record in SeqIO.parse(filename, "fasta"):
     ...     count = count + 1
+    ...
     >>> print("There were " + str(count) + " records in file " + filename)
     There were 4141 records in file NC_000913.faa
 
