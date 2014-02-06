@@ -316,7 +316,7 @@ Python dictionary:
 ``SeqIO.index(...)`` instead of ``SeqIO.parse(...)`` and a for loop.
 Which is faster?
 
-**Exercise**: Complete the following script (which I've called to use ``SeqIO.index(...)``
+**Exercise**: Complete the following script by using ``SeqIO.index(...)``
 to make a FASTA file with records of interest *in the given order*:
 
 .. sourcecode:: python
