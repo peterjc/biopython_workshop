@@ -90,6 +90,33 @@ Most of the examples use real biological data files. You could download them
 all at the start, or gradually as needed - see `sample data <SAMPLE_DATA.rst>`_
 for instructions.
 
+================
+Sample Solutions
+================
+
+Each workshop section was written in a separate directory, and in addition
+to the main text (named ``README.rst`` which is plain text file with markup
+to make it look pretty on GitHub), the folders contain sample solution
+Python scripts (named as in the text).
+
+If you are reading this on GitHub, you can view, copy/paste or download
+individual examples from your web browser. Or, you can use the ``git``
+command line tool to make a local copy of the entire workshop:
+
+.. sourcecode:: console
+
+    $ git clone https://github.com/peterjc/biopython_workshop.git
+
+Or,
+
+.. sourcecode:: console
+
+    $ git clone git@github.com:peterjc/biopython_workshop.git
+
+The best option may depend on your firewall settings. To learn more about
+``git`` and software version control, I recommend a course like one of the
+`Software Carpentry Bootcamps <http://software-carpentry.org/bootcamps/index.html>`_.
+
 =======
 History
 =======
