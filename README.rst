@@ -12,16 +12,6 @@ The Biopython website http://www.biopython.org has more information including th
 (html, `PDF available <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_),
 which is worth going through once you have mastered the basics of Python.
 
-This material was first used as part of a two-day course "Introduction to Python for
-Biologists" (Kathryn Crouch, Peter Cock and Tim Booth), part of a two-week course
-`Keystone Skills in Bioinformatics <http://environmentalomics.org/foundations/>`_,
-held in February 2014 at Centre for Ecology & Hydrology (CEH), Wallingford, UK.
-
-I presented much of it again later in February 2014 at the University of Dundee
-as part of the third year undergraduate course `BS32010 Applied Bioinformatics
-<http://www.dundee.ac.uk/undergraduate/courses/lifesci/lifescilevel3.htm>`_
-run by Dr David Martin and Dr David Booth (in a two hour slot).
-
 =================
 Workshop Sections
 =================
@@ -99,6 +89,25 @@ general should work with Python 3 with minimal changes. Check this works:
 Most of the examples use real biological data files. You could download them
 all at the start, or gradually as needed - see `sample data <SAMPLE_DATA.rst>`_
 for instructions.
+
+=======
+History
+=======
+
+This material was first used as part of a two-day course "Introduction to Python for
+Biologists" (Kathryn Crouch, Peter Cock and Tim Booth), part of a two-week course
+`Keystone Skills in Bioinformatics <http://environmentalomics.org/foundations/>`_,
+held in February 2014 at Centre for Ecology & Hydrology (CEH), Wallingford, UK.
+In a morning session lasting about 2.5 hours (plus coffee break), we covered all
+of `Reading sequence files <reading_sequence_files/README.rst>`_ and - and I quickly
+talked through `alignment files <reading_writing_alignments/README.rst>`_.
+
+I presented much of it again later in February 2014 at the University of Dundee
+as part of the third year undergraduate course `BS32010 Applied Bioinformatics
+<http://www.dundee.ac.uk/undergraduate/courses/lifesci/lifescilevel3.htm>`_
+run by Dr David Martin and Dr David Booth. In the two hour slot we covered all
+of `Reading sequence files <reading_sequence_files/README.rst>`_ and most of
+`Reading sequence files <reading_sequence_files/README.rst>`_.
 
 =====================
 Copyright and Licence
