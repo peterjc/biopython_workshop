@@ -2,6 +2,7 @@ As this material is aimed at Python beginners, we're avoiding a lot of
 useful but not fundamental things, including:
 
 * String formating with the % operator
+* Exceptions and try/except error handling
 * The ``with`` statement for context management (e.g. closing file handles)
 * The increment/decrement operators, use ``count = count + 1`` not ``count += 1``
 * List comprehensions, generator expressions, generator functions (just for loops)
