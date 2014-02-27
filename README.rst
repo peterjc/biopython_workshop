@@ -99,15 +99,16 @@ Biologists" (Kathryn Crouch, Peter Cock and Tim Booth), part of a two-week cours
 `Keystone Skills in Bioinformatics <http://environmentalomics.org/foundations/>`_,
 held in February 2014 at Centre for Ecology & Hydrology (CEH), Wallingford, UK.
 In a morning session lasting about 2.5 hours (plus coffee break), we covered all
-of `Reading sequence files <reading_sequence_files/README.rst>`_ and - and I quickly
+of `reading sequence files <reading_sequence_files/README.rst>`_ and
+`writing sequence files <writing_sequence_files/README.rst>`_ - and I quickly
 talked through `alignment files <reading_writing_alignments/README.rst>`_.
 
 I presented much of it again later in February 2014 at the University of Dundee
 as part of the third year undergraduate course `BS32010 Applied Bioinformatics
 <http://www.dundee.ac.uk/undergraduate/courses/lifesci/lifescilevel3.htm>`_
 run by Dr David Martin and Dr David Booth. In the two hour slot we covered all
-of `Reading sequence files <reading_sequence_files/README.rst>`_ and most of
-`Reading sequence files <reading_sequence_files/README.rst>`_.
+of `reading sequence files <reading_sequence_files/README.rst>`_ and most of
+`writing sequence files <writing_sequence_files/README.rst>`_.
 
 =====================
 Copyright and Licence
