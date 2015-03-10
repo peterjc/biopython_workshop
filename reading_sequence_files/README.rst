@@ -75,8 +75,9 @@ We'll start by looking at the protein sequence in the FASTA amino acid file,
     ARANINIVAIAQGSSERSISVVVNNDDATTGVRVTHQMLFNTDQVIEVFVIGVGGVGGALLEQLKRQQSW
 
 We can use ``grep`` to count the number of proteins by using the regular
-expression pattern ``^>`` (the caret is a special symbol meaning look at
-the start of a line):
+expression pattern ``^>``.  The caret is a special symbol meaning look at
+the start of a line, so this means look for lines starting with a greater
+than sign (which is how individual FASTA format sequences are marked):
 
 .. sourcecode::	console
 
