@@ -34,6 +34,9 @@ NCBI, the extension ``.fasta`` is more common, sometimes abbrievated to ``.fa``.
 The file extension ``.gbk`` is used for the NCBI GenBank format for annotated sequences
 (you will sometimes see ``.gb`` used for this as well).
 
+For anyone working on Mac OS X, the ``wget`` command is not installed by default. As noted
+above you can use ``curl -O ftp://...`` instead.
+
 ------
 Potato
 ------
@@ -64,17 +67,20 @@ the saved file something annoying like ``format?format=stockholm`` based
 on the last part of the URL. We therefore set the desired output filename
 explicitly.
 
-On Linux at the command line using wget:
+On Linux at the command line using ``wget``:
 
 .. sourcecode:: console
 
     $ wget -O "PF08792_seed.sth" http://pfam.sanger.ac.uk/family/PF08792/alignment/seed/format?format=stockholm
 
-On Mac OS X using curl you can set the saved filename as follows:
+On Mac OS X using ``curl`` you can download this file and set the filename
+as follows:
 
 .. sourcecode:: console
 
-    $ curl -o "PF08792_seed.sth" http://pfam.sanger.ac.uk/family/PF08792/alignment/seed/format?format=stockholm
+    $ curl -o "PF08792_seed.sth" -L http://pfam.sanger.ac.uk/family/PF08792/alignment/seed/format?format=stockholm
 
-Note the the output filename option is in upper case for wget, but
-confusingly is lower case for curl.
+Note the the output filename option is in upper case for ``wget``, but
+confusingly is lower case for ``curl``. We also have to include the ``-L``
+option to explicitly follow the link redirection which ``wget`` does
+automatically.
