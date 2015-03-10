@@ -101,14 +101,20 @@ Now let's count the records with Biopython using the ``SeqIO.parse`` function:
     >>> print("There were " + str(count) + " records in file " + filename)
     There were 4141 records in file NC_000913.faa
 
-Running more than few commands like this at the Python prompt gets complicated
-(especially if you make a mistake and need to edit bits to rerun them). It is also
+Running more than few commands like this at the Python prompt gets complicated,
+especially with indentation like this for loop. It is tough if you make a mistake
+and need to edit lines to rerun them (even with the up-arrow trick). It is also
 fiddly to copy and paste without the ``>>>`` prompt and ``...`` line continuation
 characters.
 
 Instead, using your favourite editor (e.g. ``nano`` or ``gedit``) create a plain
-text file (in the same directory as the *E. coli* files) named ``count_fasta.py``
-which contains the following:
+text file (in the same directory as the *E. coli* files) named ``count_fasta.py``:
+
+.. sourcecode::	console
+
+    $ nano count_fasta.py
+
+Edit your new file ``count_fasta.py`` to contain the following:
 
 .. sourcecode:: python
 
