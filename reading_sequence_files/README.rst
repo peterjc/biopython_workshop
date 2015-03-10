@@ -20,9 +20,12 @@ called ``docstrings`` at the start of your own modules, classes and functions wh
 are used by Python as the built-in help text. Let's look at some of the built-in
 Biopython documentation.
 
-We'll run the interactive Python prompt (or you can use a Python GUI if you prefer,
-depending what you are used to working with), load the ``SeqIO`` module with the
-``import`` command, and have a look at the built in help:
+We'll run the interactive Python prompt from within the command line terminal (but you
+could use a Python GUI, or `IPython <http://ipython.org/>`_,  if you prefer - depending
+on what you are used to working with).
+
+Load Biopython's ``SeqIO`` module with the ``import`` command, and have a look at the built
+in help:
 
 .. sourcecode:: pycon
 
