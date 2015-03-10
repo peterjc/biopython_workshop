@@ -114,8 +114,9 @@ Or,
     $ git clone git@github.com:peterjc/biopython_workshop.git
 
 The best option may depend on your firewall settings. To learn more about
-``git`` and software version control, I recommend a course like one of the
-`Software Carpentry Bootcamps <http://software-carpentry.org/bootcamps/index.html>`_.
+``git`` and software version control, I recommend attending a
+`Software Carpentry Workshop <http://software-carpentry.org/workshops/index.html>`_
+or similar course.
 
 =======
 History
