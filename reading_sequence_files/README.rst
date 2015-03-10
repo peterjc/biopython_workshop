@@ -37,7 +37,7 @@ in help:
     >>> help(SeqIO)
 
 You'll see the `SeqIO help text <http://biopython.org/DIST/docs/api/Bio.SeqIO-module.html>`_
-built into Biopython -- the latest version of which should also be online. Pressing
+built into Biopython - the latest version of which should also be online. Pressing
 space will show the next page of help text, the up and down cursor arrows scroll,
 and ``q`` will quit the help and return to the Python prompt.
 
@@ -154,7 +154,7 @@ Biopython's ``SeqRecord`` objects are a container holding the sequence, and any
 annotation about it - most importantly the identifier.
 
 For FASTA files, the record identifier is taken to be the first word on the ``>``
-line -- anything after a space is *not* part of the identifier.
+line - anything after a space is *not* part of the identifier.
 
 This simple example prints out the record identifers and their lengths:
 
