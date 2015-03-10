@@ -26,9 +26,13 @@ plus FASTA files of the annotated genes and their protein sequences:
     $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_K_12_substr__MG1655_uid57779/NC_000913.ffn
     $ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Bacteria/Escherichia_coli_K_12_substr__MG1655_uid57779/NC_000913.faa
 
-The NCBI use a confusing range of file extensions, but ``*.fna``, ``*.ffn`` and ``*.faa``
+The NCBI use a confusing range of file extensions: ``*.fna``, ``*.ffn`` and ``*.faa``
 are all plain text FASTA files - but specificially they are a whole chromosome (``*.fna``),
-gene sequences (``*.ffn``), and protein/amino acid sequences (``*.faa``).
+gene sequences (``*.ffn``), and protein/amino acid sequences (``*.faa``). Outside the
+NCBI, the extension ``.fasta`` is more common, sometimes abbrievated to ``.fa``.
+
+The file extension ``.gbk`` is used for the NCBI GenBank format for annotated sequences
+(you will sometimes see ``.gb`` used for this as well).
 
 ------
 Potato
