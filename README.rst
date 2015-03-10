@@ -131,17 +131,20 @@ of `reading sequence files <reading_sequence_files/README.rst>`_ and
 talked through `alignment files <reading_writing_alignments/README.rst>`_.
 
 I presented much of it again later in February 2014 at the University of Dundee
-as part of the third year undergraduate course `BS32010 Applied Bioinformatics
-<http://www.dundee.ac.uk/undergraduate/courses/lifesci/lifescilevel3.htm>`_
+as part of the third year undergraduate course *BS32010 Applied Bioinformatics*
 run by Dr David Martin and Dr David Booth. In the two hour slot we covered all
 of `reading sequence files <reading_sequence_files/README.rst>`_ and most of
 `writing sequence files <writing_sequence_files/README.rst>`_.
+
+I repeated this in March 2015 for the same third year undergraduate course,
+*BS32010 Applied Bioinformatics* at the University of Dundee.
 
 =====================
 Copyright and Licence
 =====================
 
-Copyright 2014 by Peter Cock, The James Hutton Institute, Dundee, UK. All rights reserved.
+Copyright 2014-2015 by Peter Cock, The James Hutton Institute, Dundee, UK.
+All rights reserved.
 
 This work is licensed under a `Creative Commons Attribution-ShareAlike 4.0 International
 License <http://creativecommons.org/licenses/by-sa/4.0/>`_ (CC-BY-SA 4.0).
