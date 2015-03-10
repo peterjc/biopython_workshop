@@ -5,7 +5,7 @@ useful but not fundamental things, including:
 * Exceptions and try/except error handling
 * The ``with`` statement for context management (e.g. closing file handles)
 * The increment/decrement operators, use ``count = count + 1`` not ``count += 1``
-* List comprehensions, generator expressions, generator functions (just for loops)
+* List comprehensions, generator expressions, generator functions (just use for loops)
 
 Also note that the examples should try to run under both Python 2.6, 2.7
 and 3.3 (or later) without changes. i.e. The same versions of Python which
