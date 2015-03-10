@@ -324,7 +324,7 @@ What should we do to 'fix' the problems?
 Single Records
 --------------
 
-One of the example FASTA files for *E. coli* K12 is the a single long sequence
+One of the example FASTA files for *E. coli* K12 is a single long sequence
 for the entire (circular) genome, file ``NC_000913.fna``. We can still use a
 for loop and ``SeqIO.parse(...)`` but it can feel awkward. Instead, for the
 special case where the sequence file contains one and only one record, you
