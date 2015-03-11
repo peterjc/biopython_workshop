@@ -197,11 +197,18 @@ to screen (or save it as a new file):
 
 .. sourcecode:: python
 
+    from Bio import AlignIO
+
     def count_gaps(record):
-    	"""Counts number of gaps in record's sequence."""
+        """Counts number of gaps in record's sequence."""
         return 0  # Fill in code
 
+    filename = "PF08792_seed.sth"
+    alignment = AlignIO.read(filename, "stockholm")
     alignment.sort(key=count_gaps)
+    print(alignment)
+
+Expected output:
 
 .. sourcecode:: console
 
