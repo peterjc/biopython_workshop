@@ -250,7 +250,7 @@ this. Recap:
     >>> "PGSC0003DMP400020972" in wanted_ids
     True
 
-*Exercise*: Guided by the ``filter_length.py`` script, write a new script
+**Exercise**: Guided by the ``filter_length.py`` script, write a new script
 starting as follows which writes out the potato proteins on this list:
 
 .. sourcecode:: python

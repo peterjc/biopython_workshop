@@ -182,7 +182,7 @@ can sort the rows by identifier within Biopython:
     DQIYTCT---CGGQMELWVNSTQSDLVCNECGATQPY Y494R_PBCV1/148-181
     KSQNVCSVPDCDGEKILN--QNDGYMVCKKCGFSEPI YR429_MIMIV/213-247
 
-*Exercise*: Write a Python script ``sort_alignment_by_id.py``
+**Exercise**: Write a Python script ``sort_alignment_by_id.py``
 which uses ``AlignIO.read(..)`` and ``AlignIO.write(..)``
 to convert ``PF08792_seed.sth`` into a sorted FASTA file.
 
@@ -190,7 +190,7 @@ By default the alignment's sort method uses the identifers as
 the sort key, but much like how sorting a Python list works,
 you can override this.
 
-*Advanced Exercise*: Define your own function taking a single
+**Advanced Exercise**: Define your own function taking a single
 argument (a ``SeqRecord``) which returns the number of gaps
 in the sequence. Use this to sort the alignment and print it
 to screen (or save it as a new file):

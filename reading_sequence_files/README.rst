@@ -337,7 +337,7 @@ can use ``SeqIO.read(...)``.
     >>> print(record.id + " length " + str(len(record)))
     gi|556503834|ref|NC_000913.3| length 4641652
 
-*Exercise*: Try using ``SeqIO.read(...)`` on one of the protein files.
+**Exercise**: Try using ``SeqIO.read(...)`` on one of the protein files.
 What happens?
 
 ----------------------
