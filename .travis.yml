@@ -13,7 +13,8 @@ python:
   - "pypy"
   - "pypy3"
 
-setup:
+install:
+  - pip install biopython
   - python tests/fetch_sample_data.py
 
 script:
