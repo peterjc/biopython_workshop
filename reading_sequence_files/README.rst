@@ -213,7 +213,7 @@ their length using the ``len(...)`` function, and slice them with square bracket
 to get a sub-sequence or a single letter.
 
 **Exercise**: Using ``SeqIO.parse(...)`` in a for loop, for each record print out the
-identifier, the first 10 letters of each sequences, the last 10 letters. e.g.:
+identifier, the first 10 letters of each sequences, and the last 10 letters. e.g.:
 
 .. sourcecode::	console
 
@@ -292,7 +292,7 @@ We'll talk about writing out sequence files soon, but first let's check the exam
 protein FASTA files for any "*" symbols in the sequence. For this you can use several
 of the standard Python string operations which also apply to ``Seq`` objects, e.g.:
 
-.. sourcecode:: python
+.. sourcecode:: pycon
 
     >>> my_string = "MLNTCRVPLTDRKVKEKRAMKQHKAMIVALIVICITAVVAALVTRKDLCEVHIRTGQTEVAVFTAYESE*"
     >>> my_string.startswith("M")
