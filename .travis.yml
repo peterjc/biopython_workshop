@@ -13,5 +13,9 @@ python:
   - "pypy"
   - "pypy3"
 
+setup:
+  - python tests/fetch_sample_data.py
+
 script:
   - python tests/test_consistency.py
+  - python tests/test_scripts.py
