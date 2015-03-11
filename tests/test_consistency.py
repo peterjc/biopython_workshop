@@ -56,19 +56,19 @@ for dirpath, dirnames, filenames in os.walk(base_path):
     with open(readme) as handle:
         text = handle.read()
     for filename, script in sorted(scripts.items()):
-        filename_found = (("``%s``" % filename) in text) or (("$ python %s" % filename) in text)
-        script_found = script in text
-        if filename_found and script_found:
-            print(" - %s named and present" % filename)
+        filename_used = (("``%s``" % filename) in text) or (("$ python %s" % filename) in text)
+        script_embedded = script in text
+        if filename_used and script_embedded:
+            print(" - %s named and embedded" % filename)
             good += 1
-        elif filename_found:
-            print(" - %s named but not present (warning)" % filename)
+        elif filename_used:
+            print(" - %s named but not embedded (warning)" % filename)
             warn += 1
-        elif script_found:
-            print(" - %s not named, but present in text (ERROR)" % filename)
+        elif script_embedded:
+            print(" - %s not named, but embedded in text (ERROR)" % filename)
             errors += 1
         else:
-            print(" - %s not named or present (ERROR)" % filename)
+            print(" - %s neither named nor embedded (ERROR)" % filename)
             errors += 1
 print("=" * 40)
 print("%i good, %i warnings, %i errors" % (good, warn, errors))
