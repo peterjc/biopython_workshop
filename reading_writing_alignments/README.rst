@@ -95,7 +95,7 @@ can loop over the rows as individual ``SeqRecord`` objects:
     Y494R_PBCV1/148-181 has 3 gaps
 
 **Exercise**: Write a python script called ``count_gaps.py`` which
-reports the number or records, the total number of gaps, and the
+reports the number of records, the total number of gaps, and the
 mean (average) number of gaps per record:
 
 .. sourcecode:: console
@@ -105,7 +105,9 @@ mean (average) number of gaps per record:
     Total gaps 61, average per record 4.35714285714
 
 *Tip*: If you get zero as the average, and are using Python 2,
-add the following special import line to get natural division:
+add the following special import line to the start of your Python
+file. This will give natural division (as used in Python 3) rather
+than integer division (used by default in Python 2)::
 
 .. sourcecode:: python
 
