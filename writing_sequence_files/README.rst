@@ -278,6 +278,9 @@ The sample solution is called ``filter_wanted_ids.py``, and the output should be
 **Advanced Exerise**: Modify this to read the list of wanted identifiers from
 a plain text input file (one identifier per line).
 
+**Advanced Exerise**: What is the advatages of using a Python set instead of
+a Python list for the wanted identifiers?
+
 **Discussion**: What happens if a wanted identifier is not in the input file?
 What happens if an identifer appears twice? What order is the output file?
 
