@@ -266,7 +266,7 @@ Translating CDS features
 ------------------------
 
 When dealing with GenBank files and trying to get the protein sequence of the
-genes, you'll need to look at the CDS features (coding sequences) -- not the
+genes, you'll need to look at the CDS features (coding sequences) - not the
 gene features (although for simple cases they'll have the same location).
 
 Sometimes, as in the *E. coli* exmaple, you will find the translation is

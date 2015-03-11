@@ -50,7 +50,7 @@ Save this as ``convert_gb_to_fasta.py`` and run it:
     1 records converted
 
 Notice that the ``SeqIO.convert(...)`` function returns the number of
-sequences it converted -- here only one. Also have a look at the output file:
+sequences it converted - here only one. Also have a look at the output file:
 
 .. sourcecode:: console
 
