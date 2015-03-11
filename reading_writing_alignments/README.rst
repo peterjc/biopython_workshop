@@ -198,8 +198,8 @@ to screen (or save it as a new file):
 .. sourcecode:: python
 
     def count_gaps(record):
-    	"""Counts number of gaps in record's sequence"""
-        return # Fill in code
+    	"""Counts number of gaps in record's sequence."""
+        return 0  # Fill in code
 
     alignment.sort(key=count_gaps)
 
