@@ -157,7 +157,7 @@ the rows appear in - by default this is according to the *tree*
 order (clustering similar sequences together), but it can also
 be *alphabetical* (using the identifiers).
 
-We download the file using the tree order, but here is how you
+We downloaded the file using the tree order, but here is how you
 can sort the rows by identifier within Biopython:
 
 .. sourcecode:: pycon
