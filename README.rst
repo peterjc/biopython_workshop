@@ -43,7 +43,7 @@ command line prompt, where the ``$`` itself represents the prompt. For example:
     $ python -V
     Python 2.7.5
 
-Depending how your system is configured, rather than just ``$`` you may see you
+Depending how your system is configured, rather than just ``$`` you may see your
 user name and the current working directory. Here you would only type ``python -V``
 (python space minus capital V) to find out the default version of Python installed.
 
