@@ -19,20 +19,24 @@ if os.path.isfile(filename):
     os.chdir("..")
 if os.path.isfile(os.path.join("tests", filename)):
     #Already in the repository root directory
-    base_path ="."
+    base_path = "."
 else:
     sys.stderr.write("Should be in base folder or tests folder.\n")
     sys.exit(1)
 
+
 def check(script):
     """Runs script and Will increment good, warn or errors."""
-    global errors
+    global good, warn, errors
     #TODO - Capture stderr, look for warnings
     #TODO - This assumes 'python' will be aliased as on TravisCI
     rc = os.system("python %s" % script)
     if rc:
         errors += 1
         sys.stderr.write("Return code %i from %s\n" % (rc, script))
+    else:
+        good += 1
+
 
 good = 0
 warn = 0
@@ -59,4 +63,3 @@ if errors:
     sys.stderr.write("Test failed")
     sys.exit(1)
 
-            
