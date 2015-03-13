@@ -26,6 +26,17 @@ else:
     sys.exit(1)
 
 
+def abbreviate(text):
+    if len(text) <= 1000:
+        return text
+    lines = text.split("\n")
+    if len(lines) > 20:
+        lines = lines[:10] + ["..."] + lines[-10:]
+        return "\n".join(lines)
+    # Not elegant...
+    return lines[:100] + "\n...\n" + lines[-100:]
+
+
 def check(script):
     """Runs script and Will increment good, warn or errors."""
     global good, warn, errors
@@ -43,8 +54,7 @@ def check(script):
         sys.stderr.write(stderr)
     else:
         good += 1
-        # TODO - shorten this when verbose
-        sys.stdout.write(stdout)
+        sys.stdout.write(abbreviate(stdout))
 
 
 good = 0
