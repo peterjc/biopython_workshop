@@ -10,6 +10,7 @@ TODO: Handle any command line switches?
 from __future__ import print_function
 import os
 import sys
+import subprocess
 
 filename = os.path.split(__file__)[1]
 if os.path.isfile(filename):
@@ -28,14 +29,22 @@ else:
 def check(script):
     """Runs script and Will increment good, warn or errors."""
     global good, warn, errors
-    #TODO - Capture stderr, look for warnings
     #TODO - This assumes 'python' will be aliased as on TravisCI
-    rc = os.system("python %s" % script)
-    if rc:
+    child = subprocess.Popen(["python", script],
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE,
+                             )
+    stdout, stderr = child.communicate()
+    if child.returncode:
         errors += 1
-        sys.stderr.write("Return code %i from %s\n" % (rc, script))
+        sys.stderr.write("Return code %i from %s\n" % (child.returncode, script))
+    elif stderr:
+        warn += 1
+        sys.stderr.write(stderr)
     else:
         good += 1
+        # TODO - shorten this when verbose
+        sys.stdout.write(stdout)
 
 
 good = 0
