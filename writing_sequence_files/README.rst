@@ -160,7 +160,7 @@ the last long sequence in the FASTA file. Why? What happened is each time
 round the loop when we called ``SeqIO.write(...)`` to save one record, it
 overwrote the existing data.
 
-The solution is to open and close the file explicitly, using a *file handle*.
+The simplest solution is to open and close the file explicitly, using a *file handle*.
 The ``SeqIO`` functions are happy to work with either filenames (strings) or
 file handles, and this is a case where the more low-level handle is useful.
 
