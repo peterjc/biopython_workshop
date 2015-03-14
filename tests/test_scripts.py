@@ -44,6 +44,7 @@ def check(script):
     child = subprocess.Popen(["python", script],
                              stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
+                             universal_newlines=True,
                              )
     stdout, stderr = child.communicate()
     if child.returncode:
@@ -79,6 +80,6 @@ for dirpath, dirnames, filenames in os.walk(base_path):
 print("=" * 40)
 print("%i good, %i warnings, %i errors" % (good, warn, errors))
 if errors:
-    sys.stderr.write("Test failed")
+    sys.stderr.write("Test failed\n")
     sys.exit(1)
 
