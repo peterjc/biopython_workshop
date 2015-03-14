@@ -4,6 +4,7 @@
 *.ffn
 *.faa
 *.fasta
+*.sth
 
 #Ignore backup files from some Unix editors,
 *~
