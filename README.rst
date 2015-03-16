@@ -16,7 +16,7 @@ which is worth going through once you have mastered the basics of Python.
 Workshop Sections
 =================
 
-The examples use a number of `sample data files <SAMPLE_DATA.rst>`_.
+I've broken up the workshop into sections:
 
 * `Reading sequence files <reading_sequence_files/README.rst>`_.
 * `Writing sequence files <writing_sequence_files/README.rst>`_.
@@ -161,4 +161,4 @@ License <http://creativecommons.org/licenses/by-sa/4.0/>`_ (CC-BY-SA 4.0).
 .. image:: http://i.creativecommons.org/l/by-sa/4.0/88x31.png
 
 Note this documentation links to and uses external and separately licenced
-`sample data <SAMPLE_DATA.rst>`_ files.
+sample data files.
