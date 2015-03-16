@@ -15,7 +15,7 @@ python:
 
 install:
   - pip install biopython
-  - python tests/fetch_sample_data.py
+  - ./fetch_sample_data.sh
 
 script:
   - python tests/test_consistency.py

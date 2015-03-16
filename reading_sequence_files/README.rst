@@ -9,7 +9,8 @@ which is short for sequence input/output (following the naming convention set by
 
 For these examples we're going to use files for the famous bacteria *Esherichia coli*
 K12 (from the NCBI FTP server), and some potato genes from the PGSC - see the
-`sample data instructions <../SAMPLE_DATA.rst>`_ for where to get these.
+sample data instructions in the `introduction <../README.rst>`_ for how to download
+these files.
 
 -------------
 Built-in Help

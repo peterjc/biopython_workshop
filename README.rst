@@ -86,9 +86,15 @@ general should work with Python 3 with minimal changes. Check this works:
     $ python -c "import Bio; print(Bio.__version__)"
     1.63
 
-Most of the examples use real biological data files. You could download them
-all at the start, or gradually as needed - see `sample data <SAMPLE_DATA.rst>`_
-for instructions.
+Most of the examples use real biological data files. You should download them
+all at the start using the provided shell script:
+
+.. sourcecode:: console
+
+    $ ./fetch_sample_data.sh
+
+Internally this uses the Linux command line tool ``wget``, or ``curl`` on Mac OS X.
+
 
 ================
 Sample Solutions
