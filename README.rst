@@ -138,7 +138,11 @@ of `reading sequence files <reading_sequence_files/README.rst>`_ and most of
 `writing sequence files <writing_sequence_files/README.rst>`_.
 
 I repeated this in March 2015 for the same third year undergraduate course,
-*BS32010 Applied Bioinformatics* at the University of Dundee.
+*BS32010 Applied Bioinformatics* at the University of Dundee. In a three hour
+slot we covered  `reading sequence files <reading_sequence_files/README.rst>`_
+most of `writing sequence files <writing_sequence_files/README.rst>`_ (up to
+editing sequences, but not filtering by identifier), and the start of
+`multiple-sequence alignments <reading_writing_alignments/README.rst>`_.
 
 =====================
 Copyright and Licence
