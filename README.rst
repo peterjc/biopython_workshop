@@ -72,9 +72,45 @@ This example would usually be shortened to just:
 These text blocks are also used for entire short Python scripts, which you can
 copy and save as a plain text file with the extension ``.py`` to run them.
 
-=============
-Prerequisites
-=============
+================
+Sample Solutions
+================
+
+Each workshop section was written in a separate directory, and in addition
+to the main text (named ``README.rst`` which is plain text file with markup
+to make it look pretty on GitHub), the folders contain sample solution
+Python scripts (named as in the text).
+
+===========================
+Prerequisites & Sample Data
+===========================
+
+If you are reading this on GitHub.com, you can view, copy/paste or download
+individual examples from your web browser.
+
+To make a local copy of the entire workshop, you can use the ``git``
+command line tool:
+
+.. sourcecode:: console
+
+    $ git clone https://github.com/peterjc/biopython_workshop.git
+
+Alternatively, depending on your firewall settings, use:
+
+.. sourcecode:: console
+
+    $ git clone git@github.com:peterjc/biopython_workshop.git
+
+To learn more about ``git`` and software version control, I recommend attending a
+`Software Carpentry Workshop <http://software-carpentry.org/workshops/index.html>`_
+or similar course.
+
+Most of the examples use real biological data files. You should download them
+all at the start using the `provided shell script <fetch_sample_data.sh>`_:
+
+.. sourcecode:: console
+
+    $ bash fetch_sample_data.sh
 
 We assume you have Python and Biopython 1.63 or later installed and working.
 Biopython 1.63 supports Python 2.6, 2.7 and 3.3 (and should work on more recent
@@ -85,44 +121,6 @@ general should work with Python 3 with minimal changes. Check this works:
 
     $ python -c "import Bio; print(Bio.__version__)"
     1.63
-
-Most of the examples use real biological data files. You should download them
-all at the start using the provided shell script:
-
-.. sourcecode:: console
-
-    $ ./fetch_sample_data.sh
-
-Internally this uses the Linux command line tool ``wget``, or ``curl`` on Mac OS X.
-
-
-================
-Sample Solutions
-================
-
-Each workshop section was written in a separate directory, and in addition
-to the main text (named ``README.rst`` which is plain text file with markup
-to make it look pretty on GitHub), the folders contain sample solution
-Python scripts (named as in the text).
-
-If you are reading this on GitHub, you can view, copy/paste or download
-individual examples from your web browser. Or, you can use the ``git``
-command line tool to make a local copy of the entire workshop:
-
-.. sourcecode:: console
-
-    $ git clone https://github.com/peterjc/biopython_workshop.git
-
-Or,
-
-.. sourcecode:: console
-
-    $ git clone git@github.com:peterjc/biopython_workshop.git
-
-The best option may depend on your firewall settings. To learn more about
-``git`` and software version control, I recommend attending a
-`Software Carpentry Workshop <http://software-carpentry.org/workshops/index.html>`_
-or similar course.
 
 =======
 History
