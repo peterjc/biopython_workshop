@@ -105,8 +105,15 @@ To learn more about ``git`` and software version control, I recommend attending 
 `Software Carpentry Workshop <http://software-carpentry.org/workshops/index.html>`_
 or similar course.
 
+This should make a new sub-directory, ``biopython_workshop/`` which we will now
+change into:
+
+.. sourcecode:: console
+
+    $ cd biopython_workshop
+
 Most of the examples use real biological data files. You should download them
-all at the start using the `provided shell script <fetch_sample_data.sh>`_:
+now using the `provided shell script <fetch_sample_data.sh>`_:
 
 .. sourcecode:: console
 
