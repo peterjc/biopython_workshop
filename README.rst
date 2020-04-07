@@ -10,7 +10,9 @@ Python - for example as covered in Martin Jones' free eBook
 The Biopython website http://www.biopython.org has more information including the 
 `Biopython Tutorial & Cookbook <http://biopython.org/DIST/docs/tutorial/Tutorial.html>`_
 (html, `PDF available <http://biopython.org/DIST/docs/tutorial/Tutorial.pdf>`_),
-which is worth going through once you have mastered the basics of Python.
+which is worth going through once you have mastered the basics of Python. That Tutorial & Cookbook
+is also available as `Jupyter Notebooks <https://github.com/tiagoantao/biopython-notebook>`_,
+as is `another short introductory tutorial <https://github.com/chris-rands/biopython-coronavirus>`_.
 
 =================
 Workshop Sections
